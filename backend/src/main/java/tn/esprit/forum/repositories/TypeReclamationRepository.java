@@ -4,4 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import tn.esprit.forum.entities.TypeReclamation;
 
 public interface TypeReclamationRepository extends JpaRepository<TypeReclamation,Long> {
+    public TypeReclamation findAllByTypeName(String typeName);
 }

@@ -1,5 +1,6 @@
 package tn.esprit.forum.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -17,8 +18,9 @@ public class TypeReclamation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
     Long idType;
-    String TypeName;
+    String typeName;
 
     @OneToMany(mappedBy = "typeReclamation")
+    @JsonIgnore
     List<Reclamation> reclamations;
 }

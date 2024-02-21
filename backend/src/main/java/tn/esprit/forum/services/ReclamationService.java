@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface ReclamationService {
 
-    public Reclamation addReclamation(Reclamation reclamation);
+    public Reclamation addReclamation(Reclamation reclamation, String nom);
 
     void deleteReclamation(Long idReclamation);
 

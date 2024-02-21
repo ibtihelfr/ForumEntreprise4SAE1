@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.forum.entities.Reclamation;
 import tn.esprit.forum.services.ReclamationService;
+import tn.esprit.forum.services.TypeReclamationService;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,9 +16,10 @@ public class ReclamationController {
     private final ReclamationService reclamationService;
 
 
-    @PostMapping("/addReclamation")
-    public Reclamation addReclamation(@RequestBody Reclamation reclamation) {
-        return reclamationService.addReclamation(reclamation);
+
+    @PostMapping("/addReclamation/{TypeName}")
+    public Reclamation addReclamation(@RequestBody Reclamation reclamation,@PathVariable ("TypeName") String Nom) {
+        return reclamationService.addReclamation(reclamation,Nom);
     }
 
     @DeleteMapping("/deleteReclamation/{idReclamation}")

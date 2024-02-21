@@ -23,7 +23,7 @@ public class Reclamation {
     Date dateReclamation;
 
     @ManyToOne
-    @JsonIgnore
+
     TypeReclamation typeReclamation;
     @ManyToMany
     @JsonIgnore

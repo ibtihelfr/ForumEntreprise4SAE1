@@ -3,7 +3,9 @@ package tn.esprit.forum.services.Imp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.forum.entities.Reclamation;
+import tn.esprit.forum.entities.TypeReclamation;
 import tn.esprit.forum.repositories.ReclamationRepository;
+import tn.esprit.forum.repositories.TypeReclamationRepository;
 import tn.esprit.forum.services.ReclamationService;
 import java.util.List;
 import java.util.Optional;
@@ -11,9 +13,15 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ReclamationServiceImp implements ReclamationService {
     private final ReclamationRepository reclamationRepository;
+    private final TypeReclamationRepository typeReclamationRepository;
+
 
     @Override
-    public Reclamation addReclamation(Reclamation reclamation) {
+    public Reclamation addReclamation(Reclamation reclamation, String nom) {
+       TypeReclamation tr= typeReclamationRepository.findAllByTypeName(nom);
+
+        reclamation.setTypeReclamation(tr);
+        typeReclamationRepository.save(tr);
         return reclamationRepository.save(reclamation);
     }
 
