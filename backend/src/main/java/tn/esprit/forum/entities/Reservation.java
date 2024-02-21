@@ -5,7 +5,6 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Getter
@@ -24,6 +23,5 @@ public class Reservation {
     User user;
     @ManyToOne
     Pack pack;
-    @OneToOne(cascade = CascadeType.ALL)
-    Facture facture;
+
 }

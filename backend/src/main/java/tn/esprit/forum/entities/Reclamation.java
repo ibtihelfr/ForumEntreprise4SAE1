@@ -20,7 +20,7 @@ public class Reclamation {
     @Setter(AccessLevel.NONE)
     Long idReclamation;
     String Message;
-    Date dateReservation;
+    Date dateReclamation;
 
     @ManyToOne
     @JsonIgnore

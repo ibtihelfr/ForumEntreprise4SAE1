@@ -20,11 +20,15 @@ public class Condidature {
     Long idCondidature;
     EtatCondidature etatCondidature;
     String coverLetter;
+
     @ManyToOne(cascade = CascadeType.ALL)
     Entretien entretien;
 
-    @ManyToMany(mappedBy = "condidatures")
-    List<Offre> offres;
+    @ManyToOne
+    Offre offre;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    User user;
 
 
 }

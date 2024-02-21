@@ -29,7 +29,7 @@ public class Offre {
 
     @ManyToOne(cascade = CascadeType.ALL)
     User user;
-    @ManyToMany
+    @OneToMany(mappedBy = "offre")
     List<Condidature> condidatures;
 
     @OneToMany(mappedBy = "offre")
