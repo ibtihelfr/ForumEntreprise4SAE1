@@ -1,3 +1,189 @@
 <div class="panel-header panel-header-sm">
 </div>
-<p>forum-management works!</p>
+
+<div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> Forums table </h4>
+      </div>
+      <div *ngFor="let alert of alerts">
+        <ngb-alert [type]="alert.type" [dismissible]="true" (close)="close(alert)">
+          <ng-container *ngIf="alert.icon">
+            <div class="alert-inner--icon">
+              <i class="{{alert.icon}}"></i>
+            </div>
+          </ng-container>
+          <span class="alert-inner--text"><strong>{{alert.strong}} </strong>{{ alert.message }}</span>
+        </ngb-alert>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            
+            <thead class=" text-primary">
+              <th>
+                idForum
+              </th>
+              <th>
+                dateForum
+              </th>
+              <th>
+                hour
+              </th>
+              <th>
+                description
+              </th>
+              <th>
+                bloc
+              </th>
+              <th>
+                user
+              </th>
+              <th>
+                actions
+              </th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let forum of forums">
+                <td>
+                {{forum.idForum}}
+                </td>
+                <td>
+                  {{forum.dateForum}}
+                </td>
+                <td>
+                  {{forum.hour}}
+                </td>
+                <td>
+                  {{forum.description}}
+                </td>
+                <td>
+                  {{forum.bloc}}
+                </td>
+                <td>
+                  {{forum.user}}
+                </td>
+                <td class="text-right">
+
+                  <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" (click)="openUpdate(forum.idForum)" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                    <i class="material-icons">edit</i>
+                  </button>
+                  
+                <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" (click)="delete(forum.idForum)" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                    <i class="material-icons">Delete</i>
+                </button>       
+                <ng-template #classic1 let-c="close" let-d="dismiss">
+                  <div class="modal-content">
+                    <div class="modal-body p-0">
+                      <div class="card bg-secondary shadow border-0">
+                        <div class="card-header bg-white pb-5">
+                          <div class="text-muted text-center mb-3">
+                            <small>Update Forum</small>
+                          </div>
+                        </div>
+                        <div class="card-body px-lg-5 py-lg-5">
+                          <form role="form" (submit)="updateForum()">
+                            <div class="form-group mb-3">
+                              <input class="form-control" placeholder="Date" type="date"  [(ngModel)]="selectedForum.dateForum">
+                            </div>
+                            <div class="form-group mb-3">
+                              <input class="form-control" placeholder="Hour" type="time" [(ngModel)]="selectedForum.hour">
+                            </div>
+                            <div class="form-group mb-3">
+                              <input class="form-control" placeholder="Description" type="text" [(ngModel)]="selectedForum.description">
+                            </div>
+                            <div class="form-group mb-3">
+                              <input class="form-control" placeholder="Bloc" type="text"  [(ngModel)]="selectedForum.bloc">
+                            </div>
+                            <div class="text-center">
+                              <button type="submit" class="btn btn-primary my-4">Update Forum</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+                
+                
+              
+              </td> 
+              </tr>
+            
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title"> Add Forums </h4>
+      <div class="card-body">
+        <div class="table-responsive">
+
+
+          <div class="card bg-gradient-secondary shadow">
+            <div class="card-body p-lg-5">
+              <h4 class="mb-1">Add New Forums</h4>
+              <p class="mt-0">Enter Details of the forum</p>
+              <form class="form" method="" action=""  (ngSubmit)="onSubmitForm()">
+              <div class="form-group mt-5" [ngClass]="{'focused':focus===true}">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="The date" type="date" (focus)="focus=true" id="dateForum" name="dateForum"  [(ngModel)]="f.dateForum" (blur)="focus=false">
+                </div>
+              </div>
+
+
+
+              <div class="form-group" [ngClass]="{'focused':focus1===true}">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-watch-time"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="The Hour" type="time" (focus)="focus1=true" id="hour" name="hour"  [(ngModel)]="f.hour" (blur)="focus1=false">
+                </div>
+              </div>
+
+            
+
+
+
+
+              <div class="form-group" [ngClass]="{'focused':focus1===true}">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-pin-3"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="The Bloc" type="text" (focus)="focus1=true" id="bloc" name="bloc"  [(ngModel)]="f.bloc" (blur)="focus1=false">
+                </div>
+              </div>
+
+
+              <span class="input-group-text"><i class="ni ni-ruler-pencil"></i></span>
+
+              <div class="form-group mb-4">
+                <textarea class="form-control form-control-alternative" name="name" rows="4" cols="80" id="description" name="description"  [(ngModel)]="f.description" placeholder="Type a message..."></textarea>
+              </div>
+              <div>
+                <button type="submit" class="btn btn-default btn-round btn-block btn-lg">Save Forum</button>
+              </div>
+
+            </form>
+            </div>
+            
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

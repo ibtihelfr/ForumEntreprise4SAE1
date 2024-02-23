@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,14 +20,13 @@ public class Forum {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
     Long idForum;
-    LocalDateTime dateForum;
-    LocalDateTime hour;
+    LocalDate dateForum;
+    Time hour;
     String description;
     String Bloc;
     @ManyToOne
     User user;
-    @OneToMany
-    List<Reservation> reservations;
+
 
 
 

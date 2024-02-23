@@ -11,6 +11,7 @@ import { SignupComponent } from './signup/signup.component';
 
 import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -33,6 +34,7 @@ import { LoginComponent } from './login/login.component';
     RouterModule,
     AppRoutingModule,
     HomeModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
