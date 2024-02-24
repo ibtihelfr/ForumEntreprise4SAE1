@@ -8,6 +8,11 @@ import tn.esprit.forum.repositories.ForumRepository;
 import tn.esprit.forum.services.FactureService;
 import tn.esprit.forum.services.ForumService;
 
+<<<<<<< Updated upstream
+=======
+import java.time.LocalDate;
+import java.util.Date;
+>>>>>>> Stashed changes
 import java.util.List;
 import java.util.Optional;
 
@@ -54,4 +59,13 @@ public class ForumServiceImp implements ForumService {
     public void deleteForum(Long id) {
         forumRepository.deleteById(id);
     }
+<<<<<<< Updated upstream
+=======
+
+    @Override
+    public Forum GetLatest() {
+
+        return forumRepository.findFirstByDateForumAfterOrderByDateForumAsc(LocalDate.now());
+    }
+>>>>>>> Stashed changes
 }

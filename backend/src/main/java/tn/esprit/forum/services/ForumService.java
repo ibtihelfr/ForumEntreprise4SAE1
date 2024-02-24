@@ -15,5 +15,9 @@ public interface ForumService {
     Forum findById(Long id);
 
     void deleteForum(Long id);
+<<<<<<< Updated upstream
+=======
+    Forum GetLatest();
+>>>>>>> Stashed changes
 
 }

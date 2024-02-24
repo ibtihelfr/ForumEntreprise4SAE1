@@ -1,10 +1,52 @@
 <div class="panel-header panel-header-sm">
 </div>
+<<<<<<< Updated upstream
 
+=======
+<!--Forummmmm-->
+>>>>>>> Stashed changes
 <div class="col-md-12">
     <div class="card">
       <div class="card-header">
         <h4 class="card-title"> Forums table </h4>
+<<<<<<< Updated upstream
+=======
+        <button mat-raised-button type="button" matTooltip="Remove" (click)="openAdd()"  class="btn btn-danger btn-link btn-sm btn-just-icon">
+          <i class="material-icons">Add</i>
+      </button> 
+      <ng-template #classic2 let-c="close" let-d="dismiss">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="card bg-secondary shadow border-0">
+              <div class="card-header bg-white pb-5">
+                <div class="text-muted text-center mb-3">
+                  <small>Add Forum</small>
+                </div>
+              </div>
+              <div class="card-body px-lg-5 py-lg-5">
+                <form role="form" (submit)="onSubmitForm()">
+                  <div class="form-group mb-3">
+                    <input class="form-control" placeholder="Date" type="date"  [(ngModel)]="f.dateForum">
+                  </div>
+                  <div class="form-group mb-3">
+                    <input class="form-control" placeholder="Hour" type="time" [(ngModel)]="f.hour">
+                  </div>
+                  <div class="form-group mb-3">
+                    <input class="form-control" placeholder="Description" type="text" [(ngModel)]="f.description">
+                  </div>
+                  <div class="form-group mb-3">
+                    <input class="form-control" placeholder="Bloc" type="text"  [(ngModel)]="f.bloc">
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary my-4">Add Forum</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>  
+>>>>>>> Stashed changes
       </div>
       <div *ngFor="let alert of alerts">
         <ngb-alert [type]="alert.type" [dismissible]="true" (close)="close(alert)">
@@ -68,7 +110,10 @@
                   <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" (click)="openUpdate(forum.idForum)" class="btn btn-primary btn-link btn-sm btn-just-icon">
                     <i class="material-icons">edit</i>
                   </button>
+<<<<<<< Updated upstream
                   
+=======
+>>>>>>> Stashed changes
                 <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" (click)="delete(forum.idForum)" class="btn btn-danger btn-link btn-sm btn-just-icon">
                     <i class="material-icons">Delete</i>
                 </button>       
@@ -104,6 +149,7 @@
                     </div>
                   </div>
                 </ng-template>
+<<<<<<< Updated upstream
                 
                 
               
@@ -111,12 +157,17 @@
               </tr>
             
               
+=======
+              </td> 
+              </tr>
+>>>>>>> Stashed changes
             </tbody>
           </table>
         </div>
       </div>
     </div>
 </div>
+<<<<<<< Updated upstream
 
 <div class="col-md-12">
   <div class="card">
@@ -187,3 +238,7 @@
     </div>
   </div>
 </div>
+=======
+<app-pack></app-pack>
+
+>>>>>>> Stashed changes

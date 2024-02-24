@@ -29,4 +29,12 @@ public class ForumController {
     List<Forum> readAll(){
         return forumService.getAllForum();
     }
+<<<<<<< Updated upstream
+=======
+
+    @GetMapping("/lastForum")
+        Forum getLast(){
+        return forumService.GetLatest();
+        }
+>>>>>>> Stashed changes
 }

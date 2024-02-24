@@ -23,4 +23,10 @@ export class ForumService {
   DeleteForum(forumId :number):Observable<Forum[]> {
     return this.httpClient.delete<Forum[]>(`${this.baseURL}/delete/${forumId}`);
   }
+<<<<<<< Updated upstream
+=======
+  getLatestForum(): Observable<Forum>{
+    return this.httpClient.get<Forum>(`${this.baseURL}/lastForum`);
+  }
+>>>>>>> Stashed changes
 }

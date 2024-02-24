@@ -13,9 +13,10 @@
       <div class="row justify-content-between align-items-center">
         <div class="col-lg-5 mb-5 mb-lg-0">
           <h1 class="text-white font-weight-light">Business forum</h1>
-          <p class="lead text-white mt-4">Don't lose this opportunity</p>
-          <p class="lead text-white mt-4">Bloc L</p>
-          <p class="lead text-white mt-4">2:00 PM</p>
+          <p class="lead text-white mt-4">{{f.description}}</p>
+          <p class="lead text-white mt-4">Date {{f.dateForum}}</p>
+          <p class="lead text-white mt-4">{{f.hour}} PM</p>
+          <p class="lead text-white mt-4">Bloc {{f.bloc}}</p>
           <p class="lead text-white mt-4">Be on Time</p>
           <a routerLink="/front/user-profile" class="btn btn-white mt-4">Stand Book</a>
         </div>

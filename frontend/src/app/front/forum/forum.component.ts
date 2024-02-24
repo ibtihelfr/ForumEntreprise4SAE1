@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Forum } from 'src/app/core/models/Forum';
+import { ForumService } from 'src/app/core/services/forum.service';
 
 @Component({
   selector: 'app-forum',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent implements OnInit {
+  f:Forum;
 
-  constructor() { }
+  constructor(private forumServive:ForumService) { }
 
   ngOnInit(): void {
+    this.getLatestForum();
   }
+  private getLatestForum(){
+    this.forumServive.getLatestForum().subscribe(data =>{
+        this.f=data;
+     });
+ }
 
 }

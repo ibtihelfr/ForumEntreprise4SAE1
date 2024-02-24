@@ -16,6 +16,10 @@ import { ReclamationManagementComponent } from './reclamation-management/reclama
 import { AnnonceManagementComponent } from './annonce-management/annonce-management.component';
 import { ForumService } from '../core/services/forum.service';
 import { FormsModule } from '@angular/forms';
+<<<<<<< Updated upstream
+=======
+import { PackComponent } from './pack/pack.component';
+>>>>>>> Stashed changes
 
 
 @NgModule({
@@ -30,7 +34,8 @@ import { FormsModule } from '@angular/forms';
     CondidatureManagementComponent,
     SponsorManagementComponent,
     ReclamationManagementComponent,
-    AnnonceManagementComponent
+    AnnonceManagementComponent,
+    PackComponent
   ],
   imports: [
     CommonModule,
