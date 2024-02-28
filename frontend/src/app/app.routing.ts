@@ -11,6 +11,8 @@ const routes: Routes =[
     { path: 'home',             component: HomeComponent },
     { path: 'register',           component: SignupComponent },
     { path: 'login',          component: LoginComponent },
+
+    
     { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard-routing.module').then(m => m.DashboardRoutingModule) },
     { path: 'front', loadChildren: () => import('./front/front-routing.module').then(m => m.FrontRoutingModule) },
 

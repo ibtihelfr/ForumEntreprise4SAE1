@@ -1,56 +1,78 @@
-<section class="section section-lg">
+<section class="section section-lg section-shaped">
+  <br>
+  <div class="shape shape-style-1 shape-default">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
+  <section class="section section-lg pt-lg-0 section-contact-us">
     <div class="container">
       <div class="row row-grid align-items-center">
-        <div class="col-md-6 order-md-2">
-          <img src="./assets/img/theme/promo-1.png" class="img-fluid floating">
+        <div class="col-md-6 order-md-100">
+          <img src="./assets/img/theme/Logo_ESPRIT_-_Tunisie.png" class="img-fluid floating">
         </div>
         <div class="col-md-6 order-md-1">
           <div class="pr-md-5">
-            <div class="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
-              <i class="ni ni-settings-gear-65"></i>
+            <div class="contact-form-container">
+              <form #form="ngForm" (ngSubmit)="OnSubmit(form)">
+                <h3>Contactez-nous</h3>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="sarah" [value]="user.firstName" name="firstName" required disabled>
+                  <div *ngIf="form.controls['firstName'].invalid && (form.controls['firstName'].dirty || form.controls['firstName'].touched)" class="text-danger">
+                    Le nom est requis.
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Zayati" [value]="user.LastName" name="LastName" required disabled>
+                  <div *ngIf="form.controls['LastName'].invalid && (form.controls['LastName'].dirty || form.controls['LastName'].touched)" class="text-danger">
+                    Le prénom est requis.
+                  </div>
+                </div>
+                <!-- Other form fields (Email, CV, Lettre de motivation, etc.) -->
+                <div class="form-group">
+                  <input type="email" class="form-control" placeholder="email" required>
+                  <!-- Add necessary validation for Email -->
+                </div>
+                <div class="form-group">
+                  <textarea type="file" class="form-control" placeholder="cv" required> </textarea>
+                  <!-- Add necessary validation for File -->
+                </div>
+                <div class="form-group">
+                  <div class="form-group">
+                    <div class="form-group">
+                      <textarea class="form-control" rows="4" placeholder="Lettre de motivation" [(ngModel)]="coverLetter" name="coverLetter" required></textarea>
+                      <!-- Add necessary validation for Lettre de motivation -->
+</div>
+
+                  </div>
+                  <!-- Add necessary validation for Lettre de motivation -->
+                </div>
+                <div class="form-group form-check">
+                  <input type="checkbox" class="form-check-input" id="robotCheck" required>
+                  <label class="form-check-label" for="robotCheck">Je ne suis pas un robot</label>
+                </div>
+                <!-- Your form fields here -->
+                <button type="submit" class="btn btn-success">Envoyer</button> 
+
+              </form> 
+
+              
             </div>
-            <h3>Awesome features</h3>
-            <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
-            <ul class="list-unstyled mt-5">
-              <li class="py-2">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-settings-gear-65"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-0">Carefully crafted components</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-2">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-html5"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-0">Amazing page examples</h6>
-                  </div>
-                </div>
-              </li>
-              <li class="py-2">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-satisfied"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h6 class="mb-0">Super friendly support team</h6>
-                  </div>
-                </div>
-              </li>
-            </ul>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </div> 
+    </div> 
+  </section> 
+
+</section>  
+
+
+
+
+

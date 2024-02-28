@@ -16,6 +16,8 @@ import { ReclamationComponent } from './reclamation/reclamation.component';
 import { PackComponent } from './pack/pack.component';
 import { ForumComponent } from './forum/forum.component';
 import { ProfileComponent } from './profile/profile.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     FrontComponent,
@@ -35,7 +37,10 @@ import { ProfileComponent } from './profile/profile.component';
   imports: [
     CommonModule,
     FrontRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    HttpClientModule,
+
   ]
 })
 export class FrontModule { }

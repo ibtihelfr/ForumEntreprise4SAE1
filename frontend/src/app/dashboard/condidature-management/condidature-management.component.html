@@ -1,3 +1,80 @@
 <div class="panel-header panel-header-sm">
 </div>
 <p>condidature-management works!</p>
+<div class="card-body"> 
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead class=" text-primary">
+          <th>
+           id condidature
+          </th>
+          <th>
+           Nom
+          </th>
+          <th>
+            Prenom
+           </th> 
+          <th>
+            CV
+          </th>
+          <th>
+           role
+          </th>
+          <th>
+            État de la candidature
+          </th>
+          <th class="text-right">
+           CoverLetter
+          </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of con">
+            
+            <td>{{ i.idCondidature }}</td>
+            <td>{{ i.user?.firstName }}</td> <!-- Assuming 'Nom' corresponds to the 'firstName' property of the 'user' object -->
+            <td>{{ i.user?.lastName }}</td> <!-- Assuming 'CV' corresponds to the 'cv' property of the 'user' object -->
+            <td>{{ i.user?.cv }}</td>
+            <td>{{ i.user?.role }}</td>
+            <td>{{ i.etatCondidature }}</td> 
+            <td>{{ i.coverLetter }}</td>   
+            <td class="text-right">
+              <button class="btn btn-danger" (click)="deleteCondidature(i.idCondidature)">Supprimer</button> <!-- Bouton de suppression -->
+            </td>  
+          </tr>
+       
+        </tbody>
+      </table>  
+      <table class="table">
+        <thead class=" text-primary">
+          <th>
+           id entrerient 
+          </th>
+          
+          <th>
+           Date
+          </th>
+          <th>
+            time
+           </th> 
+          <th>
+            room
+          </th>
+        
+          
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of en">
+            <td>{{ i.idEntretien }}</td>
+            
+            <td>{{ i.date }}</td> 
+            <td>{{ i.time }}</td> 
+            <td>{{ i.room }}</td>  
+          </tr>
+       
+        </tbody>
+      </table> 
+
+
+    </div>
+  </div>

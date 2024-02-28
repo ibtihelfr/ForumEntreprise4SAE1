@@ -1,5 +1,6 @@
 package tn.esprit.forum.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -25,10 +26,12 @@ public class Condidature {
     Entretien entretien;
 
     @ManyToOne
+            @JsonIgnore
     Offre offre;
 
     @ManyToOne(cascade = CascadeType.ALL)
     User user;
+    EtatCondidature etatCond;
 
 
 }
