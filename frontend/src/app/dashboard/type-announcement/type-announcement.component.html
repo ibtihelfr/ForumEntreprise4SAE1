@@ -1,0 +1,23 @@
+<div class="panel-header panel-header-sm">
+</div>
+<br>
+<br>
+<br>
+
+<div class="my-form">
+  <div *ngIf="!submitted">
+      <div class="form-group">
+  
+          <label for="libelle">libelle</label>
+          <input type="text" class="form-control" id="libelle" required [(ngModel)]="typeAnnonce.libelle" name="libelle" />
+      </div>
+
+      <button (click)="saveType()" class="btn btn-success">Submit</button>
+  </div>
+
+  <div *ngIf="submitted">
+      <h4>You submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newadd()">Add</button>
+  </div>
+
+</div>

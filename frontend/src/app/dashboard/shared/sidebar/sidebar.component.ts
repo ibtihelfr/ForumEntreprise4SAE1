@@ -14,6 +14,7 @@ export const ROUTES: RouteInfo[] = [
   { path: '/dashboard/reclamation', title: 'item Management',  icon:'ui-1_bell-53', class: '' },
   { path: '/dashboard/sponsor', title: 'sponsor Management',  icon:'ui-1_bell-53', class: '' },
   { path: '/dashboard/annonce', title: 'announcement Management',  icon:'ui-1_bell-53', class: '' },
+  { path: '/dashboard/announcement', title: 'type Management',  icon:'ui-1_bell-53', class: '' },
   { path: '/dashboard/condidature', title: 'condidature Management',  icon:'ui-1_bell-53', class: '' },
 
 
