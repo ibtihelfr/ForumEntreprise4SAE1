@@ -9,7 +9,7 @@ import { ReclamationManagementComponent } from './reclamation-management/reclama
 import { SponsorManagementComponent } from './sponsor-management/sponsor-management.component';
 import { AnnonceManagementComponent } from './annonce-management/annonce-management.component';
 import { CondidatureManagementComponent } from './condidature-management/condidature-management.component';
-import { TypeAnnouncementComponent } from './type-announcement/type-announcement.component';
+// import { TypeAnnouncementComponent } from '../front/type-announcement/type-announcement.component';
 
 const routes: Routes = [
   { 
@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: 'sponsor', component: SponsorManagementComponent },
       { path: 'annonce', component: AnnonceManagementComponent },
       { path: 'condidature', component: CondidatureManagementComponent },
-      { path: 'announcement', component: TypeAnnouncementComponent },
+      // { path: 'announcement', component: TypeAnnouncementComponent },
 
       
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },

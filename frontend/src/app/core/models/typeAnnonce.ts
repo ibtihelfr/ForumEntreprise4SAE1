@@ -1,4 +1,4 @@
 export class TypeAnnonce {
-    idForum: number;
+    idType: number;
     libelle: string;
 }

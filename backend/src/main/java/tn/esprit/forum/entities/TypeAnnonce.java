@@ -1,5 +1,6 @@
 package tn.esprit.forum.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -19,6 +20,7 @@ public class TypeAnnonce {
     Long idType;
     String libelle;
 
-    @OneToMany(mappedBy = "typeAnnonce")
+    @JsonIgnore
+    @OneToMany(mappedBy = "typeAnnonce", cascade = CascadeType.ALL)
     List<Announcement> announcements;
 }

@@ -1,4 +1,4 @@
-import { User } from './user';
+import { TypeAnnonce } from "./typeAnnonce";
 
 export class Announcement {
   id: number;
@@ -7,17 +7,12 @@ export class Announcement {
   articlePicture: string;
   valid: boolean;
   quantity: number;
-  score?: number;
-  user: User;
+  score?: number; // Depending on whether you receive this property
+  user?: any;
+  type: TypeAnnonce;
+  // Add other properties if needed
 
-  // constructor(id: number, announcementName: string, articlePrice: number, articlePicture: string, valid: boolean, quantity: number, user: User, score?: number) {
-  //   this.id = id;
-  //   this.announcementName = announcementName;
-  //   this.articlePrice = articlePrice;
-  //   this.articlePicture = articlePicture;
-  //   this.valid = valid;
-  //   this.quantity = quantity;
-  //   this.user = user;
-  //   this.score = score;
-  // }
+  constructor() {
+    this.type = new TypeAnnonce(); // Initialize the type to avoid null reference errors
+  }
 }

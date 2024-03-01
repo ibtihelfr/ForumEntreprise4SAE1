@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { TablesComponent } from './tables/tables.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -14,7 +15,8 @@ import { CondidatureManagementComponent } from './condidature-management/condida
 import { SponsorManagementComponent } from './sponsor-management/sponsor-management.component';
 import { ReclamationManagementComponent } from './reclamation-management/reclamation-management.component';
 import { AnnonceManagementComponent } from './annonce-management/annonce-management.component';
-import { TypeAnnouncementComponent } from './type-announcement/type-announcement.component';
+import { TypeAnnouncementService } from '../core/services/type-announcement.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -30,12 +32,16 @@ import { TypeAnnouncementComponent } from './type-announcement/type-announcement
     SponsorManagementComponent,
     ReclamationManagementComponent,
     AnnonceManagementComponent,
-    TypeAnnouncementComponent
   ],
   imports: [
+    HttpClientModule,
+    ReactiveFormsModule,
     CommonModule,
     DashboardRoutingModule,
-    NgbModule
-  ]
+    NgbModule,
+    FormsModule
+    
+  ],
+  providers: [TypeAnnouncementService],
 })
 export class DashboardModule { }

@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { FrontRoutingModule } from './front-routing.module';
 import { FrontComponent } from './front.component';
@@ -16,6 +19,8 @@ import { ReclamationComponent } from './reclamation/reclamation.component';
 import { PackComponent } from './pack/pack.component';
 import { ForumComponent } from './forum/forum.component';
 import { ProfileComponent } from './profile/profile.component';
+import { TypeAnnouncementComponent } from '../front/type-announcement/type-announcement.component';
+
 @NgModule({
   declarations: [
     FrontComponent,
@@ -30,12 +35,17 @@ import { ProfileComponent } from './profile/profile.component';
     ReclamationComponent,
     PackComponent,
     ForumComponent,
-    ProfileComponent
+    ProfileComponent,
+    TypeAnnouncementComponent
+
   ],
   imports: [
     CommonModule,
     FrontRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class FrontModule { }
