@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Location, PopStateEvent } from '@angular/common';
+import {AuthService} from "../../../core/services/auth.service";
 
 @Component({
     selector: 'app-navbar',
@@ -11,12 +12,15 @@ export class NavbarComponent implements OnInit {
     public isCollapsed = true;
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
+    isUserConnected: boolean = false; // Supposons que l'utilisateur ne soit pas connecté par défaut
 
-    constructor(public location: Location, private router: Router) {
+    constructor(private auth:AuthService,public location: Location, private router: Router ,private authService: AuthService) {
     }
 
     ngOnInit() {
-      this.router.events.subscribe((event) => {
+        this.isUserConnected = this.auth.isAuthenticated(); // Cela suppose que l'utilisateur est connecté.
+         console.log("etat user",this.auth.isAuthenticated());
+        this.router.events.subscribe((event) => {
         this.isCollapsed = true;
         if (event instanceof NavigationStart) {
            if (event.url != this.lastPoppedUrl)

@@ -14,6 +14,7 @@ import { CondidatureManagementComponent } from './condidature-management/condida
 import { SponsorManagementComponent } from './sponsor-management/sponsor-management.component';
 import { ReclamationManagementComponent } from './reclamation-management/reclamation-management.component';
 import { AnnonceManagementComponent } from './annonce-management/annonce-management.component';
+//import {NzTableCellDirective} from "ng-zorro-antd/table";
 
 
 @NgModule({
@@ -30,10 +31,11 @@ import { AnnonceManagementComponent } from './annonce-management/annonce-managem
     ReclamationManagementComponent,
     AnnonceManagementComponent
   ],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule,
-    NgbModule
-  ]
+    imports: [
+        CommonModule,
+        DashboardRoutingModule,
+        NgbModule,
+       // NzTableCellDirective
+    ]
 })
 export class DashboardModule { }

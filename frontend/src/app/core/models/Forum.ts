@@ -1,4 +1,4 @@
-import { User } from './user';
+//import { User } from './user';
 
 export class Forum {
   idForum: number;
@@ -6,5 +6,5 @@ export class Forum {
   hour: string; 
   description: string;
   bloc: string; 
-  user: User;
+  //user: User;
 }

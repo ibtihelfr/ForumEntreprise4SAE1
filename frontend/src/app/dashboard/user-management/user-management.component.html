@@ -1,3 +1,98 @@
 <div class="panel-header panel-header-sm">
 </div>
-<p>user-management works!</p>
+<!--<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">-->
+
+
+<div class="card card-plain">
+    <div class="card-header">
+        <h4 class="card-title"> Table on Plain Background</h4>
+        <p class="category"> Here is a subtitle for this table</p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class=" text-primary">
+                <th>
+                    id
+                </th>
+                <th>
+                    Fisrt Name
+                </th>
+                <th>
+                    LastName
+                </th>
+                <th>
+                   Role
+                </th>
+                <th>
+                    cv
+                </th>
+                <th>
+                    image
+                </th>
+                <th>
+                    email
+                </th>
+                <th>
+                    cin
+                </th>
+                <th>
+                   password
+                </th>
+                <th>
+                    numtel
+                </th>
+                <th>
+                    Banned
+                </th>
+                <th class="text-right">
+                    Actions
+                </th>
+                </thead>
+                <tbody>
+                <tr *ngFor="let u of users">
+                    <td>
+                        {{u.id}}
+                    </td>
+                    <td>
+                        {{u.firstName}}
+                    </td>
+                    <td>
+                        {{u.lastName}}
+                    </td>
+                    <td>
+                        {{u.role}}
+                    <td>
+                    <td>
+                        {{u.password}}
+                    </td>
+                    <td>
+                    {{u.cv}}
+                      </td>
+                    <td>
+                        {{u.picture}}
+                    </td>
+                    <td>
+                    {{u.email}}
+                </td> <td>
+                    {{u.cin}}
+                </td>
+                    <td>
+                        {{u.phoneNumber}}
+                    </td>
+                    <td>
+                        {{u.banned}}
+                    </td>
+                    <td class="text-right   ">
+                     <!--   <button class="btn btn-primary" (click)="edit(u.id)">Edit</button>-->
+                        <button (click)="onBanButtonClick(u.id)">Ban User</button>
+                        <button (click)="onDisBanButtonClick(u.id)">DisBan User</button>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

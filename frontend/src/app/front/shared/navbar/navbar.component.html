@@ -96,16 +96,22 @@
       </ul>
       
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-   
-        <li class="nav-item d-none d-lg-block ml-lg-4">
-          <a routerLink="/front/user-profile" >
-              <img src="./assets/img/theme/team-2-800x800.jpg" alt="Profil personnel" class="rounded-circle" style="width: 40px; height: 40px;">
+
+        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="isUserConnected">
+          <a routerLink="/front/landing">
+            <img src="./assets/img/theme/team-2-800x800.jpg" alt="Profil personnel" class="rounded-circle" style="width: 40px; height: 40px;">
           </a>
-      </li>
-      
+        </li>
+        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="!isUserConnected">
+          <a routerLink="/RegisterPage">
+            Register
+          </a>
+        </li>
+
+
       </ul>
     </div>
   </div>
 
-
+</nav>
 
