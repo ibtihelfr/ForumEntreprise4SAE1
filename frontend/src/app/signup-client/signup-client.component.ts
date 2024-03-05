@@ -35,8 +35,9 @@ export class SignupClientComponent  {
       phoneNumber: [null, [Validators.required]],
       cin: [null, [Validators.required]],
       cv: [null, [Validators.required]],
-      picture: [null, [Validators.required]],
+
       email: [null, [Validators.email,Validators.required]],
+      recaptcha: [null, Validators.required],
     });
 
   }
@@ -47,7 +48,7 @@ export class SignupClientComponent  {
   }
   submitForm() {
     console.log("aaaaaaa",this.validateForm.value);
-    if(this.validateForm.valid && !this.passwordMismatch()) {
+    if(this.validateForm.valid && !this.passwordMismatch()&& this.validateForm.get('recaptcha').value) {
 
       console.log('Form Submitted!');
 

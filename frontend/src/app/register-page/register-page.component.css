@@ -27,3 +27,10 @@
     width: 100%;
     height: 100%;
 }
+.gradient-button {
+    background-image: linear-gradient(to right, #a6e1fa, #b6f0ff);
+}
+
+.gradient-button:hover {
+    background-image: linear-gradient(to right, #b6f0ff, #a6e1fa);
+}

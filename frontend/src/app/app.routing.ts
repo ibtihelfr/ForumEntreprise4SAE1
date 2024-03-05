@@ -9,7 +9,9 @@ import { LoginComponent } from './login/login.component';
 import {SignupClientComponent} from "./signup-client/signup-client.component";
 import {RegisterPageComponent} from "./register-page/register-page.component";
 import {SignupAlumniComponent} from "./signup-alumni/signup-alumni.component";
-import {ProfileComponent} from "./profile/profile.component";
+import { Router } from '@angular/router';
+import {NgxQRCodeModule} from "ngx-qrcode2";
+
 
 const routes: Routes =[
     { path:'signup', component: SignupComponent},
@@ -22,16 +24,17 @@ const routes: Routes =[
     { path: 'RegisterPage',component: RegisterPageComponent},
     { path: 'Alumni',component:SignupAlumniComponent},
     {path: 'login',component:LoginComponent},
-    {path:'profile',component:ProfileComponent},
-
     { path: '', redirectTo: 'front', pathMatch: 'full' }
+
 ];
+
 
 @NgModule({
   imports: [
       [RouterModule.forRoot(routes)],
     CommonModule,
     BrowserModule,
+
     RouterModule.forRoot(routes,{
       useHash: true
     })

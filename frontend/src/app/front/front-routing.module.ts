@@ -10,6 +10,7 @@ import { AnnonceComponent } from './annonce/annonce.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import { PackComponent } from './pack/pack.component';
 import { ProfileComponent } from './profile/profile.component';
+//import { LogoutComponent } from './logout/logout.component'; // adjust this import to your project structure
 
 const routes: Routes = [
   { 
@@ -25,8 +26,8 @@ const routes: Routes = [
     { path: 'reclamation',     component: ReclamationComponent },
     { path: 'pack',     component: PackComponent },
     { path: 'sponsor', component: SponsorComponent },
-    { path: 'user-profile',     component: ProfileComponent },
-
+    { path: 'profile',     component: ProfileComponent },
+    //  { path: 'logout', component: LogoutComponent },
 
     { path: '', redirectTo: 'landing', pathMatch: 'full' },
 

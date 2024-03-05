@@ -19,14 +19,14 @@ import { AuthService } from './core/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupClientComponent } from './signup-client/signup-client.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
-import { SignupAlumniComponent } from './signup-alumni/signup-alumni.component';
-import { ProfileComponent } from './profile/profile.component';
+import {SignupAlumniComponent} from "./signup-alumni/signup-alumni.component";
+//
 //import { StorageComponent } from './storage/storage.component';
 //import {NzFormDirective} from "ng-zorro-antd/form";
 //import {NzButtonComponent} from "ng-zorro-antd/button";
-
-
-
+//
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+//import { RecaptchaModule } from 'ng-recaptcha';
 
 
 
@@ -37,8 +37,8 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     SignupClientComponent,
     RegisterPageComponent,
-    SignupAlumniComponent,
-    ProfileComponent,
+     SignupAlumniComponent,
+
 
 
 
@@ -56,10 +56,11 @@ import { ProfileComponent } from './profile/profile.component';
         AppRoutingModule,
         HomeModule,
         HttpClientModule,
-
+        NgxQRCodeModule,
         ReactiveFormsModule,
         //NzFormDirective,
        // NzButtonComponent,
+      //  RecaptchaModule,
 
     ],
   providers: [AuthService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

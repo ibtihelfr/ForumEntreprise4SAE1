@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import {User} from "../models/user";
+import {JwtHelperService} from "@auth0/angular-jwt";
 const TOKEN=  's_token';
 const USER='s_user';
 
@@ -16,14 +18,28 @@ export class StorageService {
   static getToken():string {
     return localStorage.getItem(TOKEN);
   }
+  getToken():string {
+    return localStorage.getItem(TOKEN);
+  }
   public saveUser(user): void {
     window.localStorage.removeItem(USER);
     window.localStorage.setItem(USER, JSON.stringify(user));
 
   }
+
   static getUser():string {
     return JSON.parse(localStorage.getItem(USER));
   }
+ /* CurrentUser(): User {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken = jwt_decode(token);
+      return decodedToken;
+    } else {
+      return null;
+    }
+  }
+  }*/
   static getUserId(): string {
     const user = JSON.parse(this.getUser());
     if (user == null) { return; }
@@ -38,6 +54,7 @@ export class StorageService {
     if (this.getToken() == null) {
       return false;
     }
+
     const role: string = this.getUserRole();
     return role == 'Student';
   }
@@ -92,6 +109,11 @@ export class StorageService {
     const user = localStorage.getItem('loggedUser');
     return user ? JSON.parse(user) : null;
   }
+
+
+
+
+
 
 
 }

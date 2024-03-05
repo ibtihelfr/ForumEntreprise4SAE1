@@ -26,6 +26,7 @@ export class AngularSectionComponent implements OnInit {
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
 
+
   open(content, type, modalDimension) {
       if (modalDimension === 'sm' && type === 'modal_mini') {
           this.modalService.open(content, { windowClass: 'modal-mini', size: 'sm', centered: true }).result.then((result) => {

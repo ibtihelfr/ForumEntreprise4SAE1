@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import {HttpClient} from "@angular/common/http";
 //import {Subscriber} from "rxjs";
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -41,13 +42,11 @@ export class LoginComponent  {
       console.log("submitForm valid")
       const email = this.validateForm.get('email')!.value;
       const password = this.validateForm.get('password')!.value;
-
-
       this.authService.login(email, password).subscribe(
           (res: any) => {
             console.log("res",res);
             console.log("res.token",res.token);
-            if (res && res.token) {
+            if (res ) {
               console.log('Login successful:', res);
               localStorage.setItem('token', JSON.stringify(res.token));
               Swal.fire({
@@ -56,7 +55,7 @@ export class LoginComponent  {
                 showConfirmButton: false,
                 timer: 2000
               }).then(() => {
-                this.router.navigate(['/front/landing']);
+                this.router.navigate(['/front/profile']);
               });
             }
           },

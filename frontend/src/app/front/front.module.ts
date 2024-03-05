@@ -17,6 +17,7 @@ import { PackComponent } from './pack/pack.component';
 import { ForumComponent } from './forum/forum.component';
 import { ProfileComponent } from './profile/profile.component';
 import {FormsModule} from "@angular/forms";
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 @NgModule({
   declarations: [
     FrontComponent,
@@ -32,12 +33,14 @@ import {FormsModule} from "@angular/forms";
     PackComponent,
     ForumComponent,
     ProfileComponent
+
   ],
   imports: [
     CommonModule,
     FrontRoutingModule,
     NgbModule,
-      FormsModule
+      FormsModule,
+    NgxQRCodeModule
 
   ]
 })

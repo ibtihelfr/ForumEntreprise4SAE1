@@ -36,6 +36,7 @@ export class SignupComponent {
             picture: [null, [Validators.required]],
             email: [null, [Validators.email,Validators.required]],
         });
+
        // this.setCustomErrorMessages();
     }
 
@@ -49,7 +50,7 @@ export class SignupComponent {
     }
     submitForm() {
         console.log("aaaaaaa",this.validateForm.value);
-        if(this.validateForm.valid && !this.passwordMismatch()) {
+        if(this.validateForm.valid ) {
 
             console.log('Form Submitted!');
 

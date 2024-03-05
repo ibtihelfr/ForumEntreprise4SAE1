@@ -63,19 +63,7 @@
             </div>
           </div>
         </li>
-        <li class="nav-item dropdown">
-          
-          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
-            <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Examples</span>
-          </a>
-          <div class="dropdown-menu">
-            <a routerLink="/front/landing" class="dropdown-item">Landing</a>
-            <a routerLink="/front/user-profile" class="dropdown-item">Profile</a>
-            <a [routerLink]="['/login']" class="dropdown-item">Login</a>
-            <a [routerLink]="['/register']" class="dropdown-item">Register</a>
-          </div>
-        </li>
+
       </ul>
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
         <li class="nav-item">
@@ -94,17 +82,25 @@
           </a>
         </li>
       </ul>
-      
+
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
 
-        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="isUserConnected">
-          <a routerLink="/front/landing">
+
+
+
+      <li *ngIf="currentUser">
+          <a routerLink="/front/profile">
             <img src="./assets/img/theme/team-2-800x800.jpg" alt="Profil personnel" class="rounded-circle" style="width: 40px; height: 40px;">
           </a>
-        </li>
-        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="!isUserConnected">
+
+
+      </li>
+
+
+
+        <li *ngIf="!currentUser"  class="nav-item d-none d-lg-block ml-lg-4">
           <a routerLink="/RegisterPage">
-            Register
+            Connexion
           </a>
         </li>
 
