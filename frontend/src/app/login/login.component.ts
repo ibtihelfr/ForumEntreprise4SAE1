@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../core/services/auth.service"
 import {StorageService} from "../core/services/storage.service";
 
@@ -18,8 +18,8 @@ export class LoginComponent  {
   focus;
   focus1;
 
-  validateForm: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router,private http: HttpClient) {
+  validateForm: UntypedFormGroup;
+  constructor(private fb: UntypedFormBuilder, private authService: AuthService, private router: Router,private http: HttpClient) {
     this.validateForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],

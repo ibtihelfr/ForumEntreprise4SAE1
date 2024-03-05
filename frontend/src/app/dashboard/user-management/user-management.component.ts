@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../core/services/auth.service";
 import {User} from "../../core/models/user";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import Swal from "sweetalert2";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
@@ -15,7 +15,7 @@ import {HttpClient} from "@angular/common/http";
 export class UserManagementComponent implements OnInit {
 users:User[];
   closeResult: string;
-  validateForm !: FormGroup;
+  validateForm !: UntypedFormGroup;
   focus;
   focus1;
   focus2;
@@ -23,7 +23,7 @@ users:User[];
   focus4;
   focus5;
   focus6;
-  constructor(private userService: AuthService,private modalService: NgbModal,private fb: FormBuilder , private authService: AuthService, private router: Router, private http: HttpClient) {
+  constructor(private userService: AuthService,private modalService: NgbModal,private fb: UntypedFormBuilder , private authService: AuthService, private router: Router, private http: HttpClient) {
   }
 
   ngOnInit() {

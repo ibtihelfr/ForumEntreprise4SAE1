@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import Swal from "sweetalert2";
 import {Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../core/services/auth.service";
 
 @Component({
@@ -12,13 +12,13 @@ import {AuthService} from "../core/services/auth.service";
 })
 export class RegisterPageComponent implements OnInit {
   closeResult: string;
-  validateForm: FormGroup;
+  validateForm: UntypedFormGroup;
   @ViewChild('classic1') classic1: any;
   @ViewChild('classic2') classic2: any;
 
 
 
-  constructor(private fb: FormBuilder,private modalService: NgbModal, private router: Router, private authService: AuthService,) {
+  constructor(private fb: UntypedFormBuilder,private modalService: NgbModal, private router: Router, private authService: AuthService,) {
     this.validateForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],

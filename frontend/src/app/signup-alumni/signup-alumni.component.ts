@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../core/services/auth.service";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
 import {HttpClient} from "@angular/common/http";
 import { ImageUploadService } from '../core/services/image-upload.service';
-import {fileURLToPath} from "url";
+//mport {fileURLToPath} from "url";
 
 
 
@@ -24,10 +24,10 @@ export class SignupAlumniComponent {
   imgURL: any;
   public imagePath: string;
 
-  validateForm !: FormGroup;
+  validateForm !: UntypedFormGroup;
   userFile: string;
 
-  constructor(private fb: FormBuilder, private authService: AuthService
+  constructor(private fb: UntypedFormBuilder, private authService: AuthService
       , private router: Router, private imageUploadService: ImageUploadService) {
   }
 

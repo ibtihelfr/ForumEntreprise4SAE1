@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../core/services/auth.service";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
@@ -17,9 +17,9 @@ export class SignupClientComponent  {
   focus1;
   focus2;
 
-  validateForm !: FormGroup;
+  validateForm !: UntypedFormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService
+  constructor(private fb: UntypedFormBuilder, private authService: AuthService
 
       , private router: Router, private http: HttpClient
   ) {
@@ -37,7 +37,7 @@ export class SignupClientComponent  {
       cv: [null, [Validators.required]],
 
       email: [null, [Validators.email,Validators.required]],
-      recaptcha: [null, Validators.required],
+     // recaptcha: [null, Validators.required],
     });
 
   }
@@ -48,7 +48,7 @@ export class SignupClientComponent  {
   }
   submitForm() {
     console.log("aaaaaaa",this.validateForm.value);
-    if(this.validateForm.valid && !this.passwordMismatch()&& this.validateForm.get('recaptcha').value) {
+    if(this.validateForm.valid && !this.passwordMismatch()) {
 
       console.log('Form Submitted!');
 

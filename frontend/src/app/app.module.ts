@@ -13,7 +13,7 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 
 
 
-import { HomeModule } from './home/home.module';
+//import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './core/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,7 +25,7 @@ import {SignupAlumniComponent} from "./signup-alumni/signup-alumni.component";
 //import {NzFormDirective} from "ng-zorro-antd/form";
 //import {NzButtonComponent} from "ng-zorro-antd/button";
 //
-import { NgxQRCodeModule } from 'ngx-qrcode2';
+//import { NgxQRCodeModule } from 'ngx-qrcode2';
 //import { RecaptchaModule } from 'ng-recaptcha';
 
 
@@ -54,9 +54,9 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
         FormsModule,
         RouterModule,
         AppRoutingModule,
-        HomeModule,
+       // HomeModule,
         HttpClientModule,
-        NgxQRCodeModule,
+       // NgxQRCodeModule,
         ReactiveFormsModule,
         //NzFormDirective,
        // NzButtonComponent,
