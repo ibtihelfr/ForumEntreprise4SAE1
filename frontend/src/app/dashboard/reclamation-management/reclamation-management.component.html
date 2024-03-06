@@ -1,3 +1,141 @@
 <div class="panel-header panel-header-sm">
 </div>
-<p>reclamation-management works!</p>
+<div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Claims</h4>
+    </div>
+    <input type="number" [(ngModel)]="searchClaimId" placeholder="Enter Claim ID">
+    <button type="button" (click)="searchClaim()">Search</button>
+    <div *ngIf="claimDetails">
+      <h2>Claim Details</h2>
+      <p>ID: {{ claimDetails.idReclamation }}</p>
+      <p>Message: {{ claimDetails.message }}</p>
+      <p>Date: {{ claimDetails.dateReclamation }}</p>
+      <p>Type: {{ claimDetails.typeReclamation }}</p>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class=" text-primary">
+            <th>
+              id 
+            </th>
+            <th>
+              Message
+            </th>
+            <th>
+              Date
+            </th>
+            <th>
+              Type
+            </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of claims">
+              <td>
+               {{c.idReclamation}}
+              </td>
+              <td>
+                {{c.message}}
+              </td>
+              <td>
+                {{c.dateReclamation}}
+              </td>
+              <td>
+                {{c.typeReclamation}}
+              </td>
+
+              <td class="text-right">
+                <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" (click)="openUpdate(c)" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                  <i class="material-icons">Update</i>
+                </button>
+                
+              <button class="btn btn-danger" (click)=" rejeterClaim(c.idReclamation)">Delete</button>
+              <div *ngIf="showDeleteMessage" class="alert alert-success mt-3">
+                Claim deleted successfully!
+              </div>
+
+            </td>
+            </tr>
+           
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <ng-template #claimModal let-c="close" let-d="dismiss">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <div class="card bg-secondary shadow border-0">
+          <div class="card-header bg-white pb-5">
+            <div class="text-muted text-center mb-3">
+              <small>Claim</small>
+            </div>
+          </div>
+          <div class="card-body px-lg-5 py-lg-5">
+            <form role="form" (submit)="onSubmitForm()">
+              
+              <div class="form-group mb-3">
+                <label for="typeReclamation">Type</label>
+                <select class="form-control" id="typeReclamation" name="typeReclamation" [(ngModel)]="c.typeReclamation">
+                  <option value="FOURNISSEUR">FOURNISSEUR</option>
+                  <option value="SPONSOR">SPONSOR</option>
+                  <option value="ADMINISTRATION">ADMINISTRATION</option>
+                  <option value="ENTREPRISE">ENTREPRISE</option>
+                </select>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="dateReclamation">Date de Reclamation</label>
+                <input class="form-control" placeholder="DateReclamtion" type="date" id ="creation" name ="creation"  [(ngModel)]="c.dateReclamation">
+              </div>
+              <div class="form-group mb-3">
+                <label for="message">Message</label>
+                <textarea  class="form-control" placeholder="message" type="text" id ="message" name ="message" [(ngModel)]="c.message"> </textarea>
+              </div>
+            
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary my-4">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="card">
+    <div class="card-header">
+      <h4 class="card-title"> Type Claims</h4>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class=" text-primary">
+            <th>
+              IdType
+            </th>
+            <th>
+              Type Name
+            </th>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div> -->

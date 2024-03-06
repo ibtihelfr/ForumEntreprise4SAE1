@@ -11,11 +11,10 @@ export const ROUTES: RouteInfo[] = [
   { path: '/dashboard/user', title: 'user Management',  icon:'location_map-big', class: '' },
   { path: '/dashboard/forum', title: 'forum Management',  icon:'ui-1_bell-53', class: '' },
 
-  { path: '/dashboard/reclamation', title: 'item Management',  icon:'ui-1_bell-53', class: '' },
+  { path: '/dashboard/reclamation', title: 'claim Management',  icon:'ui-1_bell-53', class: '' },
   { path: '/dashboard/sponsor', title: 'sponsor Management',  icon:'ui-1_bell-53', class: '' },
   { path: '/dashboard/annonce', title: 'announcement Management',  icon:'ui-1_bell-53', class: '' },
   { path: '/dashboard/condidature', title: 'condidature Management',  icon:'ui-1_bell-53', class: '' },
-  { path: '/dashboard/reclamation', title: 'Claim Management',  icon:'ui-1_bell-53', class: '' },
 
 
 ];

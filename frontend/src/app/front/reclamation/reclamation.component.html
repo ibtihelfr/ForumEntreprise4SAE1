@@ -18,39 +18,76 @@
   <br><br>
   <br><br>
   <br><br>
+</section> <!-- Close the first section -->
+
 <section class="section section-lg pt-lg-0 section-contact-us">
-    <div class="container">
-      <div class="row justify-content-center mt--300">
-        <div class="col-lg-8">
-          <div class="card bg-gradient-secondary shadow">
-            <div class="card-body p-lg-5">
-              <h4 class="mb-1">Enter your claim?</h4>
-              <p class="mt-0">Enter your claim</p>
-              <div class="form-group mt-5" [ngClass]="{'focused':focus===true}">
-                <div class="input-group input-group-alternative">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-user-run"></i></span>
-                  </div>
-                  <input class="form-control" placeholder="Your name" type="text" (focus)="focus=true" (blur)="focus=false">
+  <div class="container">
+    <div class="row justify-content-center mt--300">
+      <div class="col-lg-8">
+        <div class="card bg-gradient-secondary shadow">
+          <div class="card-body p-lg-5 d-flex flex-column align-items-center justify-content-center">
+            <h2 class="mb-1">Enter your claim?</h2>
+            <p class="lead">! YOU MUST FILL OUT THIS FORM !</p>
+            <div class="form-group mt-5 d-flex flex-column align-items-center justify-content-center" [ngClass]="{'focused':focus===true}">
+              <div class="input-group input-group-alternative d-flex flex-column align-items-center justify-content-center">
+                <div class="form-group mb-3 d-flex flex-column align-items-center justify-content-center">
+                  <label for="typeReclamation">Type</label>
+                  <select class="form-control" id="typeReclamation" name="typeReclamation" [(ngModel)]="claim.typeReclamation">
+                    <option value="FOURNISSEUR">FOURNISSEUR</option>
+                    <option value="SPONSOR">SPONSOR</option>
+                    <option value="ADMINISTRATION">ADMINISTRATION</option>
+                    <option value="ENTREPRISE">ENTREPRISE</option>
+                  </select>
+                </div>
+
+
+
+                <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+                <div class="form-group mb-4 d-flex flex-column align-items-center justify-content-center"> 
+                  <label for="dateReclamation">Date</label>
+                  <input type="date" class="form-control form-control-alternative" id="dateReclamation" name="dateReclamation" [(ngModel)]="claim.dateReclamation">
                 </div>
               </div>
-              <div class="form-group" [ngClass]="{'focused':focus1===true}">
-                <div class="input-group input-group-alternative">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                  </div>
-                  <input class="form-control" placeholder="Email address" type="email" (focus)="focus1=true" (blur)="focus1=false">
-                </div>
               </div>
+              
+              
               <div class="form-group mb-4">
-                <textarea class="form-control form-control-alternative" name="name" rows="4" cols="80" placeholder="Type a message..."></textarea>
+                <textarea class="form-control form-control-alternative" name="name" rows="6" cols="80" placeholder="Type a message..." [(ngModel)]="claim.message"></textarea>
               </div>
+
+              <div class="text-center">
+                <!-- Alert element for bad words -->
+                <div *ngIf="showBadWordsAlert" class="alert alert-danger">
+                  Please avoid using inappropriate language in your comment.
+                </div>
+                <div *ngIf="claimSubmittedSuccessfully" class="alert alert-success mt-3">
+                  Claim added successfully!
+                </div>
+                <div *ngIf="!formValid" class="alert alert-danger mt-3">
+                  Please fill in all the required fields.
+                </div>
+              </div>
+
+
+              <!-- Dans le template du composant -->
               <div>
-                <button type="button" class="btn btn-default btn-round btn-block btn-lg">Send Message</button>
+               <button type="button" class="btn btn-success" (click)="likeClaim()">Like</button>
+               <span>{{ claim.likes }}</span> <!-- Affiche le nombre de likes -->
+
+               <button type="button" class="btn btn-danger" (click)="dislikeClaim()">Dislike</button>
+                <span>{{ claim.dislikes }}</span> <!-- Affiche le nombre de dislikes -->
+                 </div>
+
+
+
+              <div>
+                <button type="button" class="btn btn-default btn-round btn-block btn-lg" (click)="submitClaim()">Send Claim</button>
               </div>
+              
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section> <!-- Close the second section -->

@@ -14,6 +14,7 @@ import { CondidatureManagementComponent } from './condidature-management/condida
 import { SponsorManagementComponent } from './sponsor-management/sponsor-management.component';
 import { ReclamationManagementComponent } from './reclamation-management/reclamation-management.component';
 import { AnnonceManagementComponent } from './annonce-management/annonce-management.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AnnonceManagementComponent } from './annonce-management/annonce-managem
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    NgbModule
+    NgbModule, 
+    FormsModule
   ]
 })
 export class DashboardModule { }
