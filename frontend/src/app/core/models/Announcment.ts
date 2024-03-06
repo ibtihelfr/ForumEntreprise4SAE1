@@ -7,12 +7,12 @@ export class Announcement {
   articlePicture: string;
   valid: boolean;
   quantity: number;
-  score?: number; // Depending on whether you receive this property
+  // score?: number; // Depending on whether you receive this property
   user?: any;
-  type: TypeAnnonce;
+  typeAnnonce: TypeAnnonce;
   // Add other properties if needed
 
-  constructor() {
-    this.type = new TypeAnnonce(); // Initialize the type to avoid null reference errors
-  }
+  // constructor() {
+  //   this.type = new TypeAnnonce(); // Initialize the type to avoid null reference errors
+  // }
 }

@@ -30,7 +30,7 @@
                 <div class="card-body px-lg-5 py-lg-5">
                   <form role="form" (submit)="onSubmitForm()">
                     <div class="form-group mb-3">
-                      <input class="form-control" placeholder="Description" type="text" x>
+                      <input class="form-control" placeholder="Description" type="text" [ngModel]="f.libelle" (ngModelChange)="f.libelle = $event">
                     </div>
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary my-4">Add Forum</button>

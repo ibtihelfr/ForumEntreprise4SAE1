@@ -10,10 +10,10 @@ public interface AnnouncementService {
     List<Announcement> findAll();
     Announcement findById (long numAnnouncement);
     void delete (long numAnnouncement);
-    List<Announcement> recommendBestAnnouncements(String type, int quantity) ;
+    //List<Announcement> recommendBestAnnouncements(String type, int quantity) ;
     public Announcement addAnnouncement(Announcement announcement, Long typeId) ;
      List<Announcement> getAnnouncementsByType(Long typeId) ;
-
-
+    //List<Announcement> filterAndRecommend(List<Announcement> announcements, int requiredSupply);
+    public List<Announcement> recommendAnnouncements(int requiredSupply);
 
     }

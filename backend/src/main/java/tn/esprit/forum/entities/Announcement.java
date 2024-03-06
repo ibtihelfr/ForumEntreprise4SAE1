@@ -23,8 +23,7 @@ public class Announcement {
     String articlePicture;
     Boolean valid;
     int quantity;
-    @Column(nullable = true)
-    double score;
+
     @ManyToOne
     User user;
     @JsonIgnore

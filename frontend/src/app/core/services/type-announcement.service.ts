@@ -17,9 +17,13 @@ export class TypeAnnouncementService {
   getAllTypes(): Observable<TypeAnnonce[]> {
     return this.http.get<TypeAnnonce[]>(`${this.baseURL}/findall`);
   }
+  getLibelles(libelle:String): Observable<TypeAnnonce> {
+    return this.http.get<TypeAnnonce>(`${this.baseURL}/findByLib/${libelle}`);
+  }
   
-  SaveType(type: TypeAnnonce): Observable<TypeAnnonce> { // Corrected return type
-    return this.http.post<TypeAnnonce>(`${this.baseURL}/add`, type); // Corrected interpolation syntax
+  
+  SaveType(type: TypeAnnonce): Observable<TypeAnnonce> { 
+    return this.http.post<TypeAnnonce>(`${this.baseURL}/add`, type); 
   }
 
   DeleteType(idType: number): Observable<TypeAnnonce[]> {
@@ -27,9 +31,15 @@ export class TypeAnnouncementService {
   }
 
   getAnnouncementsByType(typeId: number): Observable<Announcement[]> {
-    return this.http.get<Announcement[]>(`${this.baseURLAnnonce}/byType/${typeId}`);
+    return this.http.get<Announcement[]>(`${this.baseURLAnnonce}/recommend/${typeId}`);
   }
   
-  
+  addType(typeAnnouncementDto:any): Observable<any>{
+    return this.http.post(`${this.baseURL}/Type`, typeAnnouncementDto);
+  }
+
+  UpdateTtpe(type: TypeAnnonce,TypeId :number): Observable<TypeAnnonce[]> {
+    return this.http.put<TypeAnnonce[]>(`${this.baseURL}/update/${TypeId}`, type);
+  }
   
 }

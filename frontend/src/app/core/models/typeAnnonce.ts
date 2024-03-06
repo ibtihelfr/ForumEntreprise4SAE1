@@ -1,4 +1,4 @@
 export class TypeAnnonce {
-    idType: number;
+    typeId: number;
     libelle: string;
 }

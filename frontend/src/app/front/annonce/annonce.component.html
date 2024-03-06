@@ -10,6 +10,43 @@
     <span></span>
   </div>
 <br><br>
+
+<div>
+  <label for="libelle">Libellé:</label>
+  <select id="libelle" [(ngModel)]="libelle">
+    <option *ngFor="let libelle of libelles" [value]="libelle.libelle">{{ libelle.libelle }}</option>
+  </select>
+</div>
+<div>
+  <label for="announcementName">Nom de l'annonce:</label>
+  <input type="text" id="announcementName" [(ngModel)]="announcement.announcementName" placeholder="Entrez le nom de l'annonce">
+</div>
+<div>
+  <label for="articlePrice">Prix de l'article:</label>
+  <input type="number" id="articlePrice" [(ngModel)]="announcement.articlePrice" placeholder="Entrez le prix de l'article">
+</div>
+<div>
+  <label for="articlePicture">Image de l'article:</label>
+  <input type="text" id="articlePicture" [(ngModel)]="announcement.articlePicture" placeholder="Entrez l'URL de l'image de l'article">
+</div>
+<div>
+  <label for="quantity">Quantité:</label>
+  <input type="number" id="quantity" [(ngModel)]="announcement.quantity" placeholder="Entrez la quantité">
+</div>
+<div>
+  <button (click)="addAnnouncementWithType()">Ajouter l'annonce</button>
+</div>
+
+
+<!-- <select [(ngModel)]="selectedTypeId" (change)="onTypeChange()">
+  <option *ngFor="let type of types" [value]="type.id">{{ type.name }}</option>
+</select>
+
+<ul>
+  <li *ngFor="let announcement of announcements">{{ announcement.title }}</li>
+</ul> -->
+
+
 <!-- <div>
   <h2>Types</h2>
   <ul>

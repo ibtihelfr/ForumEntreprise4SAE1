@@ -17,6 +17,7 @@ import { ReclamationManagementComponent } from './reclamation-management/reclama
 import { AnnonceManagementComponent } from './annonce-management/annonce-management.component';
 import { TypeAnnouncementService } from '../core/services/type-announcement.service';
 import { FormsModule } from '@angular/forms';
+import { PostTypeAnnouncmentComponent } from './TypeAnnouncment-managment/post-type-announcment/post-type-announcment.component';
 
 
 @NgModule({
@@ -32,6 +33,8 @@ import { FormsModule } from '@angular/forms';
     SponsorManagementComponent,
     ReclamationManagementComponent,
     AnnonceManagementComponent,
+    PostTypeAnnouncmentComponent,
+    
   ],
   imports: [
     HttpClientModule,
@@ -40,7 +43,6 @@ import { FormsModule } from '@angular/forms';
     DashboardRoutingModule,
     NgbModule,
     FormsModule
-    
   ],
   providers: [TypeAnnouncementService],
 })

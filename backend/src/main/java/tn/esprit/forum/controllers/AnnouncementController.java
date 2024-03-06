@@ -36,12 +36,12 @@ public class AnnouncementController {
     public void delete(@PathVariable long idann) {
         announcementService.delete(idann);
     }
-    @GetMapping("/recommendations/{type}/{quantity}")
-    public List<Announcement> getRecommendedAnnouncements(
-            @PathVariable String type,
-            @PathVariable int quantity) {
-        return announcementService.recommendBestAnnouncements(type, quantity);
-    }
+//    @GetMapping("/recommendations/{type}/{quantity}")
+//    public List<Announcement> getRecommendedAnnouncements(
+//            @PathVariable String type,
+//            @PathVariable int quantity) {
+//        return announcementService.recommendBestAnnouncements(type, quantity);
+//    }
 
     @PostMapping("add/{typeId}")
     public Announcement addAnnouncement(@RequestBody Announcement announcement, @PathVariable long typeId) {
@@ -53,6 +53,12 @@ public class AnnouncementController {
     public List<Announcement> getAnnouncementsByType(@PathVariable("typeId") Long typeId) {
         List<Announcement> announcements = announcementService.getAnnouncementsByType(typeId);
         return announcements;
+    }
+
+    @GetMapping("/recommend/{requiredSupply}")
+    public List<Announcement> recommendAnnouncements(@PathVariable int requiredSupply) {
+        List<Announcement> recommendedAnnouncements = announcementService.recommendAnnouncements(requiredSupply);
+        return recommendedAnnouncements;
     }
 
 }

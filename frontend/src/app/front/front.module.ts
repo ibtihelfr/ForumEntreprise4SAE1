@@ -19,7 +19,7 @@ import { ReclamationComponent } from './reclamation/reclamation.component';
 import { PackComponent } from './pack/pack.component';
 import { ForumComponent } from './forum/forum.component';
 import { ProfileComponent } from './profile/profile.component';
-import { TypeAnnouncementComponent } from '../front/type-announcement/type-announcement.component';
+import { TypeAnnouncementComponent } from '../dashboard/type-announcement/type-announcement.component';
 
 @NgModule({
   declarations: [

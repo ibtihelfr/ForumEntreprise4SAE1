@@ -30,4 +30,7 @@ public class Pack {
     @OneToMany
     List<Stand> stands;
 
+    @ManyToMany(mappedBy="packs", cascade = CascadeType.ALL)
+    private List<ComposantPack> composantPacks;
+
 }

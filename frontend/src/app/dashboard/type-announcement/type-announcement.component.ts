@@ -2,6 +2,7 @@
   import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
   import { Router } from '@angular/router';
   import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Announcement } from 'src/app/core/models/Announcment';
   import { TypeAnnonce } from 'src/app/core/models/typeAnnonce';
   import { TypeAnnouncementService } from 'src/app/core/services/type-announcement.service';
 
@@ -49,6 +50,81 @@
       );
     }
     isAdding: boolean = false; // Flag to track if the adding form is open
+
+    delete(idType:number): void {
+      this.typea.DeleteType(idType).subscribe(
+        response => {
+          console.log('Forum deleted successfully:', response);
+          // Actualiser la liste des forums après la suppression
+          this.typea.getAllTypes().subscribe(
+            forums => {
+              // Mettre à jour la liste des forums dans le composant
+              this.types = forums;
+            },
+            error => {
+              console.error('Error refreshing forums:', error);
+            }
+          );
+          // Ajouter une alerte de succès
+          this.alerts.push({
+            id: this.alerts.length + 1,
+            type: 'success',
+            strong: 'Success!',
+            message: 'Forum deleted successfully',
+            icon: 'ni ni-like-2'
+          });
+        },
+        error => {
+          console.error('Error deleting forum:', error);
+          // Ajouter une alerte d'avertissement
+          this.alerts.push({
+            id: this.alerts.length + 1,
+            type: 'warning',
+            strong: 'Warning!',
+            message: 'Error deleting forum: ' + error.message,
+            icon: 'ni ni-bell-55'
+          });
+        }
+      );
+    }
+
+
+
+
+    selectedAnnouncment: Announcement = {
+      id: null,
+      announcementName: '',
+      articlePrice: null,
+      articlePicture: '',
+      valid: false,
+      quantity: null,
+      user:'',
+    };
+    openUpdate(id: number) {
+      // Copiez les détails du forum sélectionné dans selectedForum
+      const forumToUpdate = this.forums.find(forum => forum.idForum === id);
+      if (forumToUpdate) {
+        console.log(forumToUpdate);
+        this.selectedForum = forumToUpdate;
+      }
+     // Affichez le formulaire de mise à jour après avoir rempli les détails
+     this.open(this.classic1, 'modal_mini', 'sm');
+    }
+    
+    
+    updateForum() {   
+      this.selectedForum.hour += ":00";
+    
+      this.forumService.UpdateForum(this.selectedForum,this.selectedForum.idForum)
+      .subscribe(response => {
+        console.log('Forum updated successfully:', response);
+      }, error => {
+        console.error('Error updating forum:', error);
+      });
+      
+    }
+
+
 
 
   openAdd() {
