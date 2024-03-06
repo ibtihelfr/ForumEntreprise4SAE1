@@ -1,5 +1,6 @@
 package tn.esprit.forum.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -17,9 +18,9 @@ public class Review {
     Long idReview;
     Integer rating;
     String comment;
-
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne // na7ina l cascade bch ki nfaskhou l review ma yetfasa5ch l user
     User user;
+
     @ManyToOne
     Offre offre;
 }

@@ -10,6 +10,7 @@ import { AnnonceComponent } from './annonce/annonce.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import { PackComponent } from './pack/pack.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EntrepriseOffersComponent } from './entreprise-offers/entreprise-offers.component';
 
 const routes: Routes = [
   { 
@@ -26,6 +27,8 @@ const routes: Routes = [
     { path: 'pack',     component: PackComponent },
     { path: 'sponsor', component: SponsorComponent },
     { path: 'user-profile',     component: ProfileComponent },
+    { path: 'espaceEntreprise',     component: EntrepriseOffersComponent },
+
 
 
     { path: '', redirectTo: 'landing', pathMatch: 'full' },

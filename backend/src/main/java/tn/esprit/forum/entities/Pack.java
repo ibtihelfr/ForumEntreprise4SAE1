@@ -1,5 +1,6 @@
 package tn.esprit.forum.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -23,10 +24,8 @@ public class Pack {
     String description;
     int nbPlace;
 
-
     @OneToMany(mappedBy = "pack")
     List<Reservation> reservations;
-
     @OneToMany
     List<Stand> stands;
 

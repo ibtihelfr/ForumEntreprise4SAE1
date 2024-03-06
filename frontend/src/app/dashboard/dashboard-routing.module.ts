@@ -9,7 +9,6 @@ import { ReclamationManagementComponent } from './reclamation-management/reclama
 import { SponsorManagementComponent } from './sponsor-management/sponsor-management.component';
 import { AnnonceManagementComponent } from './annonce-management/annonce-management.component';
 import { CondidatureManagementComponent } from './condidature-management/condidature-management.component';
-
 const routes: Routes = [
   { 
     path: '', 
@@ -23,7 +22,6 @@ const routes: Routes = [
       { path: 'sponsor', component: SponsorManagementComponent },
       { path: 'annonce', component: AnnonceManagementComponent },
       { path: 'condidature', component: CondidatureManagementComponent },
-
       
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 
