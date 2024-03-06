@@ -9,4 +9,5 @@ public interface CondidatureService {
     void removeCondidature (long idCondidature);
     Condidature updateCondidature (Condidature condidature);
      List<Condidature> readAll();
+
 }

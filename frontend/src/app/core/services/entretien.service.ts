@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Entretien } from 'src/app/core/models/Entretien'; // Assurez-vous d'importer le modèle Entretien
-
+import { Condidature } from '../models/condidature';
+import { EtatCondidature } from '../models/condidature';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,15 +17,16 @@ export class EntretienService {
     return this.http.get<Entretien[]>(`${this.baseUrl}/entretien/all`);
   }
 
-  addEntretien(entretien: Entretien): Observable<Entretien> {
-    return this.http.post<Entretien>(`${this.baseUrl}/entretien/add`, entretien);
+  addEntretien(entretien: Entretien, idcondidature: number, etatCondidature: EtatCondidature): Observable<Entretien> {
+    const url = `${this.baseUrl}/entretien/add/${idcondidature}/${etatCondidature}`;
+    return this.http.post<Entretien>(url, entretien);
   }
 
   updateEntretien(entretien: Entretien): Observable<Entretien> {
-    return this.http.put<Entretien>(`${this.baseUrl}/entretien/update`, entretien);
+    return this.http.put<Entretien>(`${this.baseUrl}/entretien`, entretien);
   }
 
   deleteEntretien(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/entretien/${id}`);
   }
-}
+} 

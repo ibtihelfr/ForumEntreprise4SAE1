@@ -1,7 +1,11 @@
+import { Entretien } from './Entretien';
+import { offre } from './offre';
+import { User } from './user';
+
 export enum EtatCondidature{
-  Waitlisted,
-  Accepted,
-    Rejected,
+  Waitlisted="Waitlisted",
+  Accepted="Accepted",
+  Rejected="Rejected",
 }
 
 
@@ -10,19 +14,17 @@ export class Condidature {
     etatCondidature: EtatCondidature;
     coverLetter: string;
     entretien: Entretien;
-    offre: Offre;
+    offre: offre;
     user: User;
   }
   
-  export interface Entretien {
-    // Définissez les propriétés de l'entité Entretien si nécessaire
-  }
+  // export interface Entretien {
+  //   // Définissez les propriétés de l'entité Entretien si nécessaire
+  // }
   
-  export interface Offre {
-    // Définissez les propriétés de l'entité Offre si nécessaire
-  }
+  // export interface Offre {
+  //   // Définissez les propriétés de l'entité Offre si nécessaire
+  // }
   
-  export interface User {
-    // Définissez les propriétés de l'entité User si nécessaire
-  }
+
   

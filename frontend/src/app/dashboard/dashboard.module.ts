@@ -15,6 +15,7 @@ import { SponsorManagementComponent } from './sponsor-management/sponsor-managem
 import { ReclamationManagementComponent } from './reclamation-management/reclamation-management.component';
 import { AnnonceManagementComponent } from './annonce-management/annonce-management.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardRoutingModule,
     NgbModule,
     HttpClientModule,
+    FormsModule
 
   ]
 })

@@ -10,6 +10,7 @@ import tn.esprit.forum.repositories.OffreRepository;
 import tn.esprit.forum.repositories.UserRepository;
 import tn.esprit.forum.services.CondidatureService;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -47,5 +48,7 @@ public class CondidatureServiceImp implements CondidatureService {
     public List<Condidature> readAll() {
         return condidatureRepository.findAll();
     }
+
+
 }
 
