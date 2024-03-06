@@ -7,26 +7,19 @@ import { AppRoutingModule } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
-
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 
+import { HttpClientModule } from '@angular/common/http';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 
 
-
-//import { HomeModule } from './home/home.module';
+import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './core/services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
 import { SignupClientComponent } from './signup-client/signup-client.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import {SignupAlumniComponent} from "./signup-alumni/signup-alumni.component";
-//
-//import { StorageComponent } from './storage/storage.component';
-//import {NzFormDirective} from "ng-zorro-antd/form";
-//import {NzButtonComponent} from "ng-zorro-antd/button";
-//
-//import { NgxQRCodeModule } from 'ngx-qrcode2';
-//import { RecaptchaModule } from 'ng-recaptcha';
 
 
 
@@ -42,30 +35,21 @@ import {SignupAlumniComponent} from "./signup-alumni/signup-alumni.component";
 
 
 
-    
-    
-   
-  
-  
+
   ],
-    imports: [
-        BrowserModule,
-        NgbModule,
-        FormsModule,
-        RouterModule,
-        AppRoutingModule,
-       // HomeModule,
-        HttpClientModule,
-       // NgxQRCodeModule,
-        ReactiveFormsModule,
-        //NzFormDirective,
-       // NzButtonComponent,
-      //  RecaptchaModule,
-
-    ],
+  imports: [
+    BrowserModule,
+    NgbModule,
+    FormsModule,
+    RouterModule,
+    AppRoutingModule,
+    HomeModule,
+    HttpClientModule,
+    NgxQRCodeModule,
+    ReactiveFormsModule,
+  ],
   providers: [AuthService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-      JwtHelperService] ,
-
+    JwtHelperService] ,
   bootstrap: [AppComponent]
 })
 export class AppModule { }

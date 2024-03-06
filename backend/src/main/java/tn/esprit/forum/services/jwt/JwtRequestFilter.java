@@ -1,6 +1,10 @@
 package tn.esprit.forum.services.jwt;
 
 import com.fasterxml.jackson.annotation.JacksonInject;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,6 +18,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.security.Key;
+import java.util.Date;
+import java.util.function.Function;
 
 
 @Component
@@ -23,7 +30,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     private UserDetailsServiceImpl userDetailsService;
 
     @JacksonInject
-    private JwtUtil jwtUtil ;
+    public JwtUtil jwtUtil ;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -48,15 +55,43 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    private class JwtUtil {
+    public  class JwtUtil {
         public String extractUsername(String token) {
-            // Implémentez la logique pour extraire le nom d'utilisateur du token JWT
-            return null;
+            String secretKey = ""; // replace with your secret key
+            token = token.substring(7);
+            String username = Jwts.parser()
+                    .setSigningKey(secretKey)
+                    .parseClaimsJws(token)
+                    .getBody()
+                    .getSubject();
+            return username;
         }
 
-        public boolean validateToken(String token, UserDetails userDetails) {
-            // Implémentez la logique pour valider le token JWT
-            return false;
+        public Boolean validateToken (String token , UserDetails userDetails){
+            final String username =extractUsername(token);
+            return (username.equals(userDetails.getUsername())&& ! isTokenExpired(token));
         }
     }
+    private Boolean isTokenExpired (String token ){
+        return extractExpiration(token).before(new Date());
+
+}
+    public Date extractExpiration (String token){
+        return extractClaim(token, Claims::getExpiration);
+    }
+
+    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+        final Claims claims = extractAllClaims(token);
+        return claimsResolver.apply(claims);
+    }
+    private Claims extractAllClaims(String token) {
+        return Jwts.parser().setSigningKey(getSignKey())
+                .parseClaimsJwt(token).getBody();
+    }
+    private Key getSignKey() {
+
+        return Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
+    }
+
 }

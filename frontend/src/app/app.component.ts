@@ -15,7 +15,6 @@ var navbarHeight = 0;
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
     constructor() { }
 
     ngOnInit(): void {

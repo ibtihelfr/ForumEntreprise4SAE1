@@ -15,7 +15,6 @@ import { SponsorManagementComponent } from './sponsor-management/sponsor-managem
 import { ReclamationManagementComponent } from './reclamation-management/reclamation-management.component';
 import { AnnonceManagementComponent } from './annonce-management/annonce-management.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-//import {NzTableCellDirective} from "ng-zorro-antd/table";
 
 
 @NgModule({
@@ -32,13 +31,12 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     ReclamationManagementComponent,
     AnnonceManagementComponent
   ],
-    imports: [
-        CommonModule,
-        DashboardRoutingModule,
-        NgbModule,
-        FormsModule,
-        ReactiveFormsModule,
-        // NzTableCellDirective
-    ]
+  imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ]
 })
 export class DashboardModule { }

@@ -23,8 +23,8 @@ public class jwtUtill {
 
 
 
-    public static final String SECRET = "5364584521265655426";
-
+    //public static final String SECRET = "5364584521265655426";
+   private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     private String createToken(Map<String, Object> claims, String Username) {
         return Jwts.builder().setClaims(claims).setSubject(Username).setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 90))
@@ -32,14 +32,17 @@ public class jwtUtill {
     }
 
     private Key getSignKey() {
-        byte[] KeyBytes = Decoders.BASE64.decode(SECRET);
-        return Keys.hmacShaKeyFor(KeyBytes);
+
+        return Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
     }
 
     public String generateToken (UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
         return createToken(claims, userDetails.getUsername());
     }
+
+
 
     private Claims extractAllClaims(String token) {
         return Jwts.parser().setSigningKey(getSignKey())

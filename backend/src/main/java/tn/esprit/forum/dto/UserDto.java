@@ -15,12 +15,12 @@ public class UserDto {
     int cin;
     String firstName;
     String lastName;
-    String picture;
 
     String email;
     int phoneNumber;
     String password;
     String cv;
+
 
 
 

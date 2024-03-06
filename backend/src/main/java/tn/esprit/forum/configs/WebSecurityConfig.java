@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import tn.esprit.forum.services.jwt.JwtRequestFilter;
@@ -26,10 +28,10 @@ public class WebSecurityConfig {
         return http.csrf().disable()
 
                 .authorizeHttpRequests()
-                .requestMatchers("/authenticate", "/company/sign-up", "/client/sign-up", "/ads", "/search/{service}" ,"/swagger-ui/**",
+                .requestMatchers("/authenticate", "/Company/signup", "/Client/signup", "/ads", "/search/{service}" ,"/swagger-ui/**",
                         "/v3/api-docs/**",
                         "/v3/api-docs",
-                        "/swagger-ui/index.html")
+                        "/swagger-ui/index.html" ,"/user/**","/user/upload")
 
                 .permitAll()
                 .and()
@@ -46,6 +48,10 @@ public class WebSecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
+    }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
 

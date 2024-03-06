@@ -9,6 +9,8 @@ import {StorageService} from "../../core/services/storage.service";
 import {User} from "../../core/models/user";
 import { Router } from '@angular/router';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { ImageService } from 'src/app/core/services/image.service';
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-profile',
@@ -48,15 +50,17 @@ export class ProfileComponent implements OnInit {
     isShow: boolean;
 
     topPosToStartShowing = 100;
+    previewImage: string | ArrayBuffer;
 
 
 
     uploadedFiles: any[] = [];
 
-    constructor( public authService: AuthService, private storageService: StorageService , private router: Router) { }
+    constructor(public authService: AuthService, private storageService: StorageService,private imageService:ImageService , private router: Router) { }
     decodedToken: any;
     currentUser: User | undefined;
     ngOnInit(): void {
+
       //  this.decodedToken=this.storageService.getUser();
 /********Get the user connected*********/
         this.authService.CurrentUser().subscribe(
@@ -77,13 +81,28 @@ export class ProfileComponent implements OnInit {
 
 
     }
+    getImageById(id: string): void {
+        this.imageService.getImageById(id).subscribe(data => {
+            let blob = new Blob([data], { type: 'image/jpeg' });
+            let url = window.URL.createObjectURL(blob);
+            // Utilisez l'URL pour afficher l'image
+        });
+    }
     navigateToLogin() {
         this.router.navigate(['/login']);
     }
     selectFile(event: any): void {
 
+      //  this.selectedFiles = event.target.files;
         this.selectedFiles = event.target.files;
-
+        if (this.selectedFiles) {
+            const file: File | null = this.selectedFiles.item(0);
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = e => this.previewImage = reader.result;
+                reader.readAsDataURL(file);
+            }
+        }
     }
     upload(addForm: NgForm): void {
 
@@ -104,11 +123,10 @@ export class ProfileComponent implements OnInit {
                         console.log("1");
 
                         if (event.type === HttpEventType.UploadProgress) {
-                            console.log("2");
+                            console.log('2');
 
                             this.progress = Math.round(100 * event.loaded / event.total)
-                        }
-                        else if (event instanceof HttpResponse) {
+                        } else if (event instanceof HttpResponse) {
                             console.log("3");
 
                             this.message = event.body.message;
@@ -148,6 +166,9 @@ export class ProfileComponent implements OnInit {
             }
         );
     }
+
+
+    // ...
 
 
 }

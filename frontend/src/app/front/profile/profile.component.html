@@ -31,9 +31,10 @@
                 <div class="px-4">
                     <div class="row">
                         <div class="col-lg-3 order-lg-2">
+
                             <div class="card-profile-image">
                                 <a href="javascript:void(0)">
-                                    <img src="./assets/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <img [src]="previewImage" class="rounded-circle">
                                 </a>
                             </div>
                         </div>
@@ -48,6 +49,7 @@
 
                                 <form class="row justify-content-center" #addForm="ngForm" (ngSubmit)="upload(addForm)">
                                     <div class="col-8">
+
                                         <label class="btn btn-default p-0">
                                             <input type="file" required (change)="selectFile($event)" />
                                             <button [disabled]="addForm.form.invalid" type="submit" class="btn btn-scroll2 profile-image-upload">cloud_upload</button>
@@ -68,15 +70,15 @@
                     <div class="text-center mt-5">
                         <p Welcome  to your profile page.></p>
                        <!-- <h3>{{currentUser.firstName}} <span class="font-weight-light"> :FirstName  </span></h3>-->
-                        <div><i class="ni education_hat mr-2"></i>  <h3>{{currentUser?.lastName}}<span class="font-weight-light"> :lastName </span></h3>
+                        <div><i class="ni education_hat mr-2"></i>  <h5><span class="font-weight-light"> *lastName: </span> </h5><h3>{{currentUser?.lastName}}</h3>
                         </div>
-                        <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i><h3>{{currentUser?.email}}<span class="font-weight-light"> :Email  </span></h3></div>
-                        <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i><h3>{{currentUser?.role}}<span class="font-weight-light"> :Role </span></h3></div>
-                        <div><i class="ni education_hat mr-2"></i><h3>{{currentUser?.cin}}<span class="font-weight-light"> :Cin  </span></h3></div>
+                        <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i><h5><span class="font-weight-light"> *Email:  </span></h5><h3>{{currentUser?.email}}</h3></div>
+                        <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i><h5><span class="font-weight-light"> Role =></span></h5><h3>{{currentUser?.role}}</h3></div>
+                        <div><i class="ni education_hat mr-2"></i><h5><span class="font-weight-light"> *Cin:  </span></h5><h3>{{currentUser?.cin}}</h3></div>
 
-                        <div><i class="ni education_hat mr-2"></i><h3>{{currentUser?.phoneNumber}}<span class="font-weight-light"> :phoneNumber </span></h3></div>
+                        <div><i class="ni education_hat mr-2"></i><h5><span class="font-weight-light"> *phoneNumber: </span></h5><h3>{{currentUser?.phoneNumber}}</h3></div>
 
-                      <!--  <ngx-qrcode [value]="qrData"></ngx-qrcode>-->
+                         <ngx-qrcode [value]="qrData"></ngx-qrcode>
                     </div>
                     <div class="mt-5 py-5 border-top text-center">
                         <div class="row justify-content-center">

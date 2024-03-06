@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../core/services/auth.service";
 import {User} from "../core/models/user";
-import {UntypedFormBuilder, UntypedFormGroup, NgForm, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Router} from "@angular/router";
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
@@ -18,9 +18,9 @@ export class SignupComponent {
     focus1;
     focus2;
 
-    validateForm !: UntypedFormGroup;
+    validateForm !: FormGroup;
 
-    constructor(private fb: UntypedFormBuilder, private authService: AuthService, private router: Router, private http: HttpClient) {
+    constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private http: HttpClient) {
     }
 
     ngOnInit() {

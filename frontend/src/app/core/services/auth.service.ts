@@ -9,7 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export const AUTH_HEADER='authorization';
 
 import {Router} from "@angular/router";
-import {User} from "../models/user";
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'

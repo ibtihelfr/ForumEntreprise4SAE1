@@ -1,12 +1,15 @@
 package tn.esprit.forum.entities;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.Type;
 import org.springframework.stereotype.Component;
 import tn.esprit.forum.dto.UserDto;
 import tn.esprit.forum.entities.Enum.Role;
 
+import java.util.Base64;
 import java.util.List;
 
 @Entity
@@ -25,7 +28,10 @@ public class User {
     int cin;
     String firstName;
     String lastName;
-    String picture;
+     boolean banned;
+
+
+   // String picture;
     @Enumerated(EnumType.STRING)
     Role role;
     String email;
@@ -44,17 +50,23 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     List<Forum> forum;
+
+
+
+
     public UserDto getDto(){
         UserDto userDto=new UserDto();
         userDto.setId(id);
         userDto.setCin(cin);
         userDto.setCv(cv);
         userDto.setEmail(email);
+
         userDto.setPassword(password);
-        userDto.setPicture(picture);
+        //userDto.setPicture(picture);
         userDto.setFirstName(firstName);
         userDto.setLastName(lastName);
         userDto.setPhoneNumber(phoneNumber);
       return userDto;
     }
+
 }

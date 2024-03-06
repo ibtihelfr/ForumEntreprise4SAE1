@@ -6,9 +6,11 @@
 </div>
 <div class="sidebar-wrapper">
     <ul class="nav">
-        <li *ngFor="let menuItem of menuItems">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
             <a [routerLink]="[menuItem.path]">
-                {{menuItem.title}}
+                <i class="now-ui-icons {{menuItem.icon}}"></i>
+                <!-- <h4 class="display-4 mb-0">{{menuItem.title}}</h4> -->
+                <h7 class="mb-0">{{menuItem.title}} </h7>
             </a>
         </li>
     </ul>

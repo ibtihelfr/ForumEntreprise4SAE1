@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../core/services/auth.service";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
@@ -12,14 +12,14 @@ import {HttpClient} from "@angular/common/http";
 })
 export class SignupClientComponent  {
 
-  test : Date = new Date();
+  test: Date = new Date();
   focus;
   focus1;
   focus2;
 
-  validateForm !: UntypedFormGroup;
+  validateForm !: FormGroup;
 
-  constructor(private fb: UntypedFormBuilder, private authService: AuthService
+  constructor(private fb: FormBuilder, private authService: AuthService
 
       , private router: Router, private http: HttpClient
   ) {
@@ -37,17 +37,13 @@ export class SignupClientComponent  {
       cv: [null, [Validators.required]],
 
       email: [null, [Validators.email,Validators.required]],
-     // recaptcha: [null, Validators.required],
     });
 
-  }
-
-
-  passwordMismatch()  : boolean {
+  }passwordMismatch(): boolean {
     return this.validateForm.get('password')?.value !== this.validateForm.get('confirmPassword')?.value;
   }
   submitForm() {
-    console.log("aaaaaaa",this.validateForm.value);
+    console.log("aaaaaaa1",this.validateForm.value);
     if(this.validateForm.valid && !this.passwordMismatch()) {
 
       console.log('Form Submitted!');
