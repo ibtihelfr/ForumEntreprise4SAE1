@@ -35,7 +35,10 @@ public class TypeAnnonceServiceImp implements TypeAnnoceService {
     public TypeAnnonce findById(long numTypeAnnonce) {
         return typeAnnoceRepository.findById(numTypeAnnonce).orElse(null);
     }
-
+    @Override
+    public TypeAnnonce findByType(String lib) {
+        return typeAnnoceRepository.findByLibelle(lib);
+    }
     @Override
     public void delete(long numTypeAnnonce) {
         typeAnnoceRepository.deleteById(numTypeAnnonce );

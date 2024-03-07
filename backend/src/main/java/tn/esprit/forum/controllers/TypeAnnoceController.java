@@ -24,9 +24,17 @@ public class TypeAnnoceController {
     public List<TypeAnnonce> findAll(){
         return typeAnnoceService.findAll() ;
     }
+    @GetMapping("findByLib/{libelle}")
+    public TypeAnnonce findlib(@PathVariable("libelle")String lib){
+        return typeAnnoceService.findByType(lib) ;
+    }
     @DeleteMapping("delete/{idType}")
     public void delete(@PathVariable long idType) {
         typeAnnoceService.delete(idType);
+    }
+    @PutMapping("update")
+    public TypeAnnonce updateType (@RequestBody  TypeAnnonce typeAnnonce){
+        return typeAnnoceService.updateTypeAnnonce(typeAnnonce);
     }
 
 

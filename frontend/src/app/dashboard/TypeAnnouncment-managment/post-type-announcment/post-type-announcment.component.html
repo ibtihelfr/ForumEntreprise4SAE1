@@ -10,7 +10,35 @@
       <span></span>
     </div>
     <br><br>
-    <div>
+    <section class="section section-lg pt-lg-0 section-contact-us">
+      <div class="container">
+        <div class="row justify-content-center mt--300">
+          <div class="col-lg-8">
+            <div class="card bg-gradient-secondary shadow">
+              <div class="card-body p-lg-5">
+                <h4 class="mb-1">Enter what you are searching</h4>
+                <p class="mt-0">and how much</p>
+    
+                <!-- Ajout du HTML fonctionnel ici -->
+                <div>
+                  <label for="typeLibelle">Choisissez un libellé:</label>
+                  <select id="typeLibelle" [(ngModel)]="selectedLibelle" class="form-control">
+                    <option *ngFor="let typeAnnonce of typeAnnonces" [value]="typeAnnonce.libelle">{{ typeAnnonce.libelle }}</option>
+                  </select>
+                </div>
+                <div class="form-group mt-4">
+                  <label for="requiredSupply">Quantité minimale requise:</label>
+                  <input type="number" id="requiredSupply" [(ngModel)]="requiredSupply" placeholder="Entrez la quantité minimale" class="form-control">
+                </div>
+                <button (click)="getRecommendedAnnouncements()" class="btn btn-primary btn-block btn-lg mt-4">Afficher les annonces recommandées</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- <div>
       <label for="typeLibelle">Choisissez un libellé:</label>
       <select id="typeLibelle" [(ngModel)]="selectedLibelle">
         <option *ngFor="let typeAnnonce of typeAnnonces" [value]="typeAnnonce.libelle">{{ typeAnnonce.libelle }}</option>
@@ -21,13 +49,76 @@
       <input type="number" id="requiredSupply" [(ngModel)]="requiredSupply" placeholder="Entrez la quantité minimale">
     </div>
     <button (click)="getRecommendedAnnouncements()">Afficher les annonces recommandées</button>
-    
+     -->
     <div *ngIf="announcements.length > 0">
       <h2>Annonces recommandées:</h2>
-      <ul>
+
+      <div class="row row-grid">
+        <div class="col-lg-4" *ngFor="let announcement of announcements">
+          <div class="card card-lift--hover shadow border-0">
+            <div class="card-body py-5">
+              <div class="icon icon-shape icon-shape-primary rounded-circle mb-4">
+                <i class="ni ni-check-bold"></i>
+              </div>
+              <h6 class="text-primary text-uppercase">{{ announcement.announcementName }}</h6>
+              <p class="description mt-3">{{ announcement.articlePicture }}</p>
+              <div>
+                <span class="badge badge-pill badge-primary">{{ announcement.valid }}</span>
+                <span class="badge badge-pill badge-primary">{{ announcement.quantity }}</span>
+              </div>
+              <a routerLink="/front/condidature" class="btn btn-primary mt-4">Valider</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+       <!-- <section class="section section-lg pt-lg-0 mt--200">
+        <div *ngIf="announcements.length > 0">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+              
+              <div class="row row-grid">
+
+                <div class="col-lg-4" *ngFor="let announcement of announcements">
+                  <div class="card card-lift--hover shadow border-0">
+                    <div class="card-body py-5">
+                      <div class="icon icon-shape icon-shape-success rounded-circle mb-4">
+                        <i class="ni ni-istanbul"></i>
+                      </div>
+                      <h6 class="text-success text-uppercase">{{ annonce.announcementName }}</h6>
+                      <p class="description mt-3">Prix: {{ annonce.articlePrice }}</p>
+                      <p class="description mt-3">Quantité disponible: {{ annonce.quantity }}</p>
+                      <div>
+                        <span class="badge badge-pill badge-success" *ngIf="annonce.valid">Annonce validée</span>
+                        <span class="badge badge-pill badge-danger" *ngIf="!annonce.valid">Annonce non validée</span>
+                      </div>
+                      <button (click)="deleteAnnouncement(annonce.id)" class="btn btn-success mt-4">Supprimer</button>
+                    </div>
+                  </div>
+                </div>
+                
+              </div></div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+      
+      <!-- <ul>
         <li *ngFor="let announcement of announcements">{{ announcement.announcementName }}</li>
-      </ul>
-    </div>
+      </ul> -->
+    
+
+
+
+
+
+
+
+
+
+
     
     <!-- <div class="container mt-4">
       

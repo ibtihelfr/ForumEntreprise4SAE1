@@ -65,6 +65,33 @@
                   <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" (click)="delete(type.idType)" class="btn btn-danger btn-link btn-sm btn-just-icon">
                     <i class="material-icons">Delete</i>
                   </button>
+                  <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" (click)="openUpdate(type.idType)" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                    <i class="material-icons">edit</i>
+                  </button>
+                  <ng-template #classic1 let-c="close" let-d="dismiss">
+                    <div class="modal-content">
+                      <div class="modal-body p-0">
+                        <div class="card bg-secondary shadow border-0">
+                          <div class="card-header bg-white pb-5">
+                            <div class="text-muted text-center mb-3">
+                              <small>Update type</small>
+                            </div>
+                          </div>
+                          <div class="card-body px-lg-5 py-lg-5">
+                            <form role="form" (submit)="updateForum()">
+                              <div class="form-group mb-3">
+                                <input class="form-control" placeholder="Date" type="date"  [(ngModel)]="selectedTypeAnnouncment.libelle">
+                              </div>
+                              
+                              <div class="text-center">
+                                <button type="submit" class="btn btn-primary my-4">Update Forum</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
                 </td>
               </tr>
             </tbody>

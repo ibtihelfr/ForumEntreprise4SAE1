@@ -7,9 +7,14 @@ import java.util.List;
 
 public interface TypeAnnoceService {
     TypeAnnonce ajouterType(TypeAnnonce typeAnnonce);
-    TypeAnnonce updateTypeAnnonce(TypeAnnonce typeAnnonce);
-    List<TypeAnnonce> findAll();
-    TypeAnnonce findById (long numTypeAnnonce);
-    void delete (long numTypeAnnonce);
 
+    TypeAnnonce updateTypeAnnonce(TypeAnnonce typeAnnonce);
+
+    List<TypeAnnonce> findAll();
+
+    TypeAnnonce findById(long numTypeAnnonce);
+
+    void delete(long numTypeAnnonce);
+
+    public TypeAnnonce findByType(String lib);
 }

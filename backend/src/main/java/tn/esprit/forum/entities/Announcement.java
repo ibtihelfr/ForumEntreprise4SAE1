@@ -6,6 +6,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -20,10 +21,14 @@ public class Announcement {
     Long id;
     String announcementName;
     double articlePrice;
-    String articlePicture;
+//    @OneToOne(mappedBy = "announcement")
+//    private ImageAnnouncment imageAnnouncments;
+
+        String articlePicture;
     Boolean valid;
     int quantity;
 
+    @JsonIgnore
     @ManyToOne
     User user;
     @JsonIgnore
@@ -31,11 +36,5 @@ public class Announcement {
     TypeAnnonce typeAnnonce;
     @OneToOne(cascade = CascadeType.ALL)
     Facture facture;
-
-
-
-
-
-
 
 }

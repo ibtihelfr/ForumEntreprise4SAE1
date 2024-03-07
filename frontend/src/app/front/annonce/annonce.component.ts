@@ -17,14 +17,51 @@ export class AnnonceComponent implements OnInit {
   libelles: TypeAnnonce[] = []; // Liste pour stocker les libellés
   announcement: Announcement = new Announcement();
   libelle: string = '';
-
+  annoncesUtilisateur: Announcement[];
+  annonces: any[] = [];
   constructor(private announcementService: TypeAnnouncementService,private AnnService:AnnouncmentServiceService) {}
 
 
   ngOnInit(): void {
     this.loadTypes();
     this.getLibelles();
+    // Appel du service pour récupérer les annonces de l'utilisateur avec l'ID 3 (statique)
+    this.AnnService.getAnnouncementsByUserId(3)
+      .subscribe(annonces => {
+        this.annoncesUtilisateur = annonces;
+        console.log(annonces);
+      }, error => {
+        console.error('Erreur lors de la récupération des annonces:', error);
+      });
+    // this.loadAnnouncementsForCurrentUser();
+
+  
   }
+
+  loadAnnouncementsForCurrentUser(): void {
+    const userId = 3; // Mettez ici l'ID de l'utilisateur actuel
+    this.AnnService.getAnnouncementsByUserId(userId)
+      .subscribe(annonces => {
+        this.annoncesUtilisateur = annonces;
+        console.log(annonces);
+      }, error => {
+        console.error('Erreur lors de la récupération des annonces:', error);
+      });
+  }
+
+  deleteAnnouncement(id: number) {
+    // Appelez le service pour supprimer l'annonce
+    this.AnnService.deleteAnnouncement(id)
+      .subscribe(() => {
+        console.log('Annonce supprimée avec succès');
+        // Retirez l'annonce supprimée de la liste locale
+        this.annoncesUtilisateur = this.annoncesUtilisateur.filter(annonce => annonce.id !== id);
+      }, error => {
+        console.error('Erreur lors de la suppression de l\'annonce:', error);
+      });
+  }
+
+
   getLibelles(): void {
     this.announcementService.getAllTypes()
       .subscribe(libelles => {
@@ -33,15 +70,21 @@ export class AnnonceComponent implements OnInit {
         console.error('Erreur lors de la récupération des libellés:', error);
       });
   }
+
+
+
+
   addAnnouncementWithType(): void {
     // Récupérer le TypeAnnonce correspondant au libellé sélectionné
     const selectedTypeAnnonce = this.libelles.find(libelle => libelle.libelle === this.libelle);
     if (selectedTypeAnnonce) {
-  //    this.announcement.typeAnnonce = selectedTypeAnnonce;
-      
-      this.AnnService.addAnnouncementWithType(selectedTypeAnnonce.libelle,this.announcement,3)//+1 cuurentUser.id
+      // Appeler le service pour ajouter l'annonce avec le bon type
+      this.AnnService.addAnnouncementWithType(selectedTypeAnnonce.libelle, this.announcement, 3) //+1 cuurentUser.id
         .subscribe(addedAnnouncement => {
           console.log('Annonce ajoutée:', addedAnnouncement);
+          // Ajouter l'annonce ajoutée à la liste locale pour l'afficher immédiatement
+          this.annoncesUtilisateur.push(addedAnnouncement);
+          // Réinitialiser l'annonce et le libellé après l'ajout
           this.announcement = new Announcement();
           this.libelle = '';
         }, error => {
@@ -51,20 +94,33 @@ export class AnnonceComponent implements OnInit {
       console.error('Libellé sélectionné non trouvé.');
     }
   }
-
- /* addAnnouncementWithType(): void {
-    this.AnnService.addAnnouncementWithType(this.libelle, this.announcement)
-      .subscribe(addedAnnouncement => {
-        console.log('Annonce ajoutée:', addedAnnouncement);
-        this.announcement = new Announcement();
-        this.libelle = '';
-      }, error => {
-        console.error('Erreur lors de l\'ajout de l\'annonce:', error);
-      });
-  }*/
+  
 
 
 
+
+  // addAnnouncementWithType(): void {
+  //   // Récupérer le TypeAnnonce correspondant au libellé sélectionné
+  //   const selectedTypeAnnonce = this.libelles.find(libelle => libelle.libelle === this.libelle);
+  //   if (selectedTypeAnnonce) {
+  //     // Appeler le service pour ajouter l'annonce avec le bon type
+  //     this.AnnService.addAnnouncementWithType(selectedTypeAnnonce.libelle, this.announcement, 3) //+1 cuurentUser.id
+  //       .subscribe(addedAnnouncement => {
+  //         console.log('Annonce ajoutée:', addedAnnouncement);
+  //         // Ajouter l'annonce ajoutée à la liste locale pour l'afficher immédiatement
+  //         this.annoncesUtilisateur.push(addedAnnouncement);
+  //         // Réinitialiser l'annonce et le libellé après l'ajout
+  //         this.announcement = new Announcement();
+  //         this.libelle = '';
+  //       }, error => {
+  //         console.error('Erreur lors de l\'ajout de l\'annonce:', error);
+  //       });
+  //   } else {
+  //     console.error('Libellé sélectionné non trouvé.');
+  //   }
+
+
+  // }
   loadTypes() {
     this.announcementService.getAllTypes().subscribe(types => {
       this.types = types;
@@ -78,95 +134,4 @@ export class AnnonceComponent implements OnInit {
       });
     }
   }
-  
-
-
-  // types: TypeAnnonce[] = [];
-  // selectedType: TypeAnnonce | null = null;
-  // announcements: Announcement[] = [];
-
-  // constructor(private typeAnnouncementService: TypeAnnouncementService) {}
-
-  // ngOnInit() {
-  //   // this.fetchTypes();
-  // }
-
-  // fetchTypes() {
-  //   this.typeAnnouncementService.getAllTypes()
-  //     .subscribe(
-  //       (types: TypeAnnonce[]) => {
-  //         this.types = types;
-  //       },
-  //       (error) => {
-  //         console.error('Error fetching types:', error);
-  //       }
-  //     );
-  // }
-  // onSelectType(type: TypeAnnonce) {
-  //   this.selectedType = type;
-  //   this.fetchAnnouncementsByType(type.idType); // Pass the typeId
-  // }
-  
-
-  // fetchAnnouncementsByType(typeId: number) {
-  //   this.typeAnnouncementService.getAnnouncementsByType(typeId)
-  //     .subscribe(
-  //       (announcements: Announcement[]) => {
-  //         this.announcements = announcements;
-  //       },
-  //       (error) => {
-  //         console.error('Error fetching announcements by type:', error);
-  //       }
-  //     );
-  // }
-  // ;
-  }
-
-
-
-
-
-
-
-  // types: TypeAnnonce[] = [];
-  // selectedType: TypeAnnonce | null = null;
-  // announcements: Announcement[] = [];
-
-  // constructor(private typeAnnouncementService: TypeAnnouncementService) {}
-
-  // ngOnInit() {
-  //   this.getAnnouncementsByType();
-  // }
-
-  // getAnnouncementsByType() {
-  //   this.typeAnnouncementService.getAnnouncementsByType().subscribe((res=>{
-  //     console.log(res);
-  //   }))
-    // this.typeAnnouncementService.getAllTypes()
-    //   .subscribe(
-    //     (types: TypeAnnonce[]) => {
-    //       this.types = types;
-    //     },
-    //     (error) => {
-    //       console.error('Error fetching types:', error);
-    //     }
-    //   );
-  //}
-
-  // fetchAnnouncementsByType(typeId: number) {
-  //   this.typeAnnouncementService.getAnnouncementsByType(typeId)
-  //     .subscribe(
-  //       (announcements: Announcement[]) => {
-  //         this.announcements = announcements;
-  //       },
-  //       (error) => {
-  //         console.error('Error fetching announcements by type:', error);
-  //       }
-  //     );
-  // }
-
-  // onSelectType(type: TypeAnnonce) {
-  //   this.selectedType = type;
-  //   this.fetchAnnouncementsByType(type.idType);
-  // }
-
+}

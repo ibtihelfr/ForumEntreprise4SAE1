@@ -32,6 +32,8 @@ import { Announcement } from 'src/app/core/models/Announcment';
     focus: any;
     focus1: any;
     types: TypeAnnonce[]= []
+    typean: TypeAnnonce[]
+
     f: TypeAnnonce = new TypeAnnonce();
 
     constructor(private modalService: NgbModal, private typea: TypeAnnouncementService) {}
@@ -91,21 +93,18 @@ import { Announcement } from 'src/app/core/models/Announcment';
 
 
 
-    selectedAnnouncment: Announcement = {
-      id: null,
-      announcementName: '',
-      articlePrice: null,
-      articlePicture: '',
-      valid: false,
-      quantity: null,
-      user:'',
+    selectedTypeAnnouncment: TypeAnnonce = {
+      typeId: null,
+      libelle: '',
+      
+      
     };
-    openUpdate(id: number) {
+    openUpdate(typeId: number) {
       // Copiez les détails du forum sélectionné dans selectedForum
-      const forumToUpdate = this.forums.find(forum => forum.idForum === id);
-      if (forumToUpdate) {
-        console.log(forumToUpdate);
-        this.selectedForum = forumToUpdate;
+      const TypeUpdate = this.typean.find(type => type.typeId === typeId);
+      if (TypeUpdate) {
+        console.log(TypeUpdate);
+        this.selectedTypeAnnouncment = TypeUpdate;
       }
      // Affichez le formulaire de mise à jour après avoir rempli les détails
      this.open(this.classic1, 'modal_mini', 'sm');
@@ -113,9 +112,8 @@ import { Announcement } from 'src/app/core/models/Announcment';
     
     
     updateForum() {   
-      this.selectedForum.hour += ":00";
     
-      this.forumService.UpdateForum(this.selectedForum,this.selectedForum.idForum)
+      this.typea.UpdateTtpe(this.selectedTypeAnnouncment,this.selectedTypeAnnouncment.typeId)
       .subscribe(response => {
         console.log('Forum updated successfully:', response);
       }, error => {
